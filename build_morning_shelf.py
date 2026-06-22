@@ -448,6 +448,15 @@ EXTRA_SECTIONS = {
         "Paper Breakdowns (PDFs)": ARPIT_BREAKDOWNS,
         "Paper Notes (Blog)": ARPIT_NOTES,
     },
+    "📚 Kafka & Stream Processing": {
+        "Papers": [
+            ("Kafka: a Distributed Messaging System for Log Processing", "Jay Kreps et al.", "https://notes.stephenholiday.com/Kafka.pdf"),
+            ("Kafka versus RabbitMQ", "arXiv 1709.00333", "https://arxiv.org/abs/1709.00333"),
+            ("Analysis of Design Patterns and Benchmark Practices in Apache Kafka Event-Streaming Systems", "arXiv 2512.16146", "https://arxiv.org/html/2512.16146"),
+            ("On Efficiently Partitioning a Topic in Apache Kafka", "arXiv 2205.09415", "https://arxiv.org/abs/2205.09415"),
+            ("Kafka-ML: connecting the data stream with ML/AI frameworks", "arXiv 2006.04105", "https://arxiv.org/abs/2006.04105"),
+        ],
+    },
 }
 
 
@@ -584,6 +593,7 @@ def build_html():
     total_brooker = sum(len(v) for v in EXTRA_SECTIONS["📚 Marc Brooker's Essential Reading"].values())
     total_pwl = sum(len(v) for v in EXTRA_SECTIONS["🎥 Papers We Love Videos"].values())
     total_arpit = sum(len(v) for v in EXTRA_SECTIONS["📝 Arpit Bhayani's Papershelf"].values())
+    total_kafka = sum(len(v) for v in EXTRA_SECTIONS["📚 Kafka & Stream Processing"].values())
 
     all_section_keys = list(SECTIONS.keys()) + list(EXTRA_SECTIONS.keys())
 
@@ -636,7 +646,7 @@ def build_html():
                     <p class="text-sm text-stone-900/50 dark:text-stone-50/50 mt-1" id="header-subtitle">A curated index of Computer Science paper breakdowns from across the web</p>
                 </div>
                 <div class="flex items-center gap-4" id="header-count">
-                    <span class="text-xs text-stone-900/40 dark:text-stone-50/40 tabular-nums">{total_acolyer + total_brooker + total_pwl + total_arpit} entries · {unique_acolyer} Acolyer papers + {total_brooker} Brooker refs + {total_pwl} PWL videos + {total_arpit} Arpit notes</span>
+                    <span class="text-xs text-stone-900/40 dark:text-stone-50/40 tabular-nums">{total_acolyer + total_brooker + total_pwl + total_arpit + total_kafka} entries · {unique_acolyer} Acolyer papers + {total_brooker} Brooker refs + {total_pwl} PWL videos + {total_arpit} Arpit notes + {total_kafka} Kafka papers</span>
                 </div>
             </div>
             <!-- Search -->
