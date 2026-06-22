@@ -181,18 +181,7 @@ PWL_VIDEOS = [
 ]
 
 # ============================================================
-# SOURCE 4: Arpit Bhayani's Papershelf
-# ============================================================
-
-ARPIT_PAPERS = [
-    ("On-demand Container Loading in AWS Lambda", "Arpit Bhayani", "https://arpitbhayani.me/blogs/on-demand-container-loading-in-aws-lambda"),
-    ("SQL Has Problems. We Can Fix Them: Pipe Syntax In SQL", "Arpit Bhayani", "https://arpitbhayani.me/blogs/sql-has-problems-we-can-fix-them-pipe-syntax-in-sql"),
-    ("NanoLog: A Nanosecond Scale Logging System", "Arpit Bhayani", "https://arpitbhayani.me/blogs/nanolog-a-nanosecond-scale-logging-system"),
-    ("WTF: The Who to Follow Service at Twitter", "Arpit Bhayani", "https://arpitbhayani.me/blogs/wtf-the-who-to-follow-service-at-twitter"),
-]
-
-# ============================================================
-# HIGH-LEVEL SECTION MAPPING (same as before)
+# HIGH-LEVEL SECTION MAPPING
 # ============================================================
 
 SECTIONS = {
@@ -229,7 +218,131 @@ SECTIONS = {
     ],
 }
 
-# New sections for non-Acolyer sources
+# ============================================================
+# SOURCE 4: Arpit Bhayani's Papershelf
+# ============================================================
+
+ARPIT_BREAKDOWNS = [
+    ("Real-time Data Infrastructure at Uber", "Arpit Bhayani", "https://drive.google.com/file/d/120zrm63AxpWXNHCoY9aOo45mem_zrOcl/view?usp=sharing"),
+    ("DeepSeekMath-V2: Towards Self-Verifiable Mathematical Reasoning", "Arpit Bhayani", "https://drive.google.com/file/d/1GRWC0m7_Txzpttwh689Ki4QvPfw7Fzb6/view?usp=sharing"),
+    ("Lost in the Middle: How Language Models Use Long Contexts", "Arpit Bhayani", "https://drive.google.com/file/d/16Mp2CjM_AdmItMhFTZjqr47j0U9Fmj13/view?usp=sharing"),
+    ("Yedalog: Exploring Knowledge at Scale", "Arpit Bhayani", "https://drive.google.com/file/d/1lSGc9EwLL0YyO54C-P5g45V_ub0PLrfS/view?usp=sharing"),
+    ("C/C++ Thread Safety Analysis", "Arpit Bhayani", "https://drive.google.com/file/d/1MefMB5wxgJ8MeDYmzzDyitc8CXtbJUlu/view?usp=sharing"),
+    ("Mesa: Geo-Replicated, Near Real-Time, Scalable Data Warehousing", "Arpit Bhayani", "https://drive.google.com/file/d/1A9er-QaeGlQXkVOmvSCXarB2DfFoxQFr/view?usp=sharing"),
+    ("MyRocks: LSM-Tree Database Storage Engine Serving Facebook's Social Graph", "Arpit Bhayani", "https://drive.google.com/file/d/1HrL7uhEkWwmi5u8rfPRBXYRFJnn-VOwg/view?usp=sharing"),
+    ("Storing and Querying Tree-Structured Records in Dremel", "Arpit Bhayani", "https://drive.google.com/file/d/1ttlkHG_3Vr7jnKnlk7igqSJZV9-SQkbx/view?usp=sharing"),
+    ("In praise of empathic AI", "Arpit Bhayani", "https://drive.google.com/file/d/1yBXVlZXdojDCuwW64K_k-5i1-Z1m46Xh/view?usp=drive_link"),
+    ("In-Memory Performance for Big Data", "Arpit Bhayani", "https://drive.google.com/file/d/1tk2_z6fwI0swOHidOMp_U17HlO8zU8bT/view?usp=sharing"),
+    ("AGILE: elastic distributed resource scaling for Infrastructure-as-a-Service", "Arpit Bhayani", "https://drive.google.com/file/d/1TuOu7ojdn0FRa1RB9qlSj6h0wK8og6Nd/view?usp=sharing"),
+    ("Web-scale Job Scheduling", "Arpit Bhayani", "https://drive.google.com/file/d/1F_8IehQpC9yDEM7oeqM5vJi347K3b65w/view?usp=sharing"),
+    ("Spanner: Google’s Globally-Distributed Database", "Arpit Bhayani", "https://drive.google.com/file/d/1DWzgQsX0aXkkYNR3Df2zWOe3PBPIzID-/view?usp=sharing"),
+    ("Optimizing Google’s Warehouse Scale Computers: The NUMA Experience", "Arpit Bhayani", "https://drive.google.com/file/d/1X_3btCINzqD9kyZsYmcfRYihnPHNxHFh/view?usp=sharing"),
+    ("F1: A Distributed SQL Database That Scales", "Arpit Bhayani", "https://drive.google.com/file/d/1noUO2CigYcJV_du_5FSIwSocGkW0NG_L/view?usp=sharing"),
+    ("Classifying YouTube Channels: a Practical System", "Arpit Bhayani", "https://drive.google.com/file/d/1xArmuiRC_15oVL3J37UrnPo_fxz2KpNK/view?usp=sharing"),
+    ("Talking in Circles: Selective Sharing in Google+", "Arpit Bhayani", "https://drive.google.com/file/d/1eMMTWJD2F063EzPeSES3gc-W37V72CbY/view?usp=sharing"),
+    ("Megastore: Providing Scalable, Highly Available Storage for Interactive Services", "Arpit Bhayani", "https://drive.google.com/file/d/1dqZYKAvR13RJWrxePKWha5rU5rPlkUJi/view?usp=sharing"),
+    ("Tenzing: A SQL Implementation On The MapReduce Framework", "Arpit Bhayani", "https://drive.google.com/file/d/1nfAAGnKtoEI8lFO-bt84r2-PTutwE2Dp/view?usp=sharing"),
+    ("Dremel: Interactive Analysis of Web-Scale Datasets", "Arpit Bhayani", "https://drive.google.com/file/d/1ks_GT7gZXLO8mzVL-0u4-3l60Vr1LyKe/view?usp=sharing"),
+    ("Pregel: A System for Large-Scale Graph Processing", "Arpit Bhayani", "https://drive.google.com/file/d/1LTqeoxsQlr9-S4vaFIZN3pI51bmqc1jn/view?usp=sharing"),
+    ("Web-Scale Extraction of Structured Data", "Arpit Bhayani", "https://drive.google.com/file/d/1uNT-c0hcP_gB5Ob-59T1lWcOj5WNABtB/view?usp=sharing"),
+    ("Leaper: A Learned Prefetcher for Cache Invalidation in LSM-tree based Storage Engines", "Arpit Bhayani", "https://drive.google.com/file/d/1xYuuKYJlDneSwN2Tz2FOXbowVrKwIb45/view?usp=sharing"),
+    ("ScaleDB: A Scalable, Asynchronous In-Memory Database", "Arpit Bhayani", "https://drive.google.com/file/d/1AbZ27wwrzOs9Ichjdbtt8d-yYzPO7bfn/view?usp=sharing"),
+    ("Segcache: a memory-efficient and scalable in-memory key-value cache for small objects", "Arpit Bhayani", "https://drive.google.com/file/d/11whR-LfZfxieep-qSqIkmuSNDWkgtGps/view?usp=sharing"),
+    ("Efficient Search Ranking in Social Networks", "Arpit Bhayani", "https://drive.google.com/file/d/1JigWwsfsLLhRGDsswyb3hN_HEvw3yToi/view?usp=sharing"),
+    ("Google News Personalization: Scalable Online Collaborative Filtering", "Arpit Bhayani", "https://drive.google.com/file/d/1gzFUCGhe-9_3XdHbW2ZfZHygJb36yGuo/view?usp=sharing"),
+    ("Challenges to Adopting Stronger Consistency at Scale", "Arpit Bhayani", "https://drive.google.com/file/d/1zgdSKdWwHWSN3aASThigfE5nT0Khkou6/view?usp=sharing"),
+    ("RadixZip: Linear Time Compression of Token Streams", "Arpit Bhayani", "https://drive.google.com/file/d/1PeQilqwDfvfYw79o4vL59GGEAhAII16p/view?usp=sharing"),
+    ("Skip graphs", "Arpit Bhayani", "https://drive.google.com/file/d/1Zyp3B-OBlPNbPyyXouF1fVSrF6Wu1QSp/view?usp=sharing"),
+    ("The Bw-Tree: A B-tree for New Hardware Platforms", "Arpit Bhayani", "https://drive.google.com/file/d/10XSVTh3tgyibREz5EsxbRxsc9vzmN8Ge/view?usp=sharing"),
+    ("Scaling Up All Pairs Similarity Search", "Arpit Bhayani", "https://drive.google.com/file/d/1K08LaJel9ouK5vygT5IJTtkCd9bpicyQ/view?usp=sharing"),
+    ("Detecting Near Duplicates for Web Crawling", "Arpit Bhayani", "https://drive.google.com/file/d/1g5pz1BbCuWQERJbVdDz8WRIY0j8OnHbj/view?usp=sharing"),
+    ("Indexing Dataspaces", "Arpit Bhayani", "https://drive.google.com/file/d/1S_zszgSWG_p0D97TJO1hVjBXLMqq-tyW/view?usp=sharing"),
+    ("Query logs alone are not enough", "Arpit Bhayani", "https://drive.google.com/file/d/1DGtKfP9iTw54r4CQ8h3LhRAdOIoVKRME/view?usp=sharing"),
+    ("Simple Efficient Load Balancing Algorithms for Peer-to-Peer Systems", "Arpit Bhayani", "https://drive.google.com/file/d/1YDuBXvsF0HxPd0uM7g33slfvOsu0wI9f/view?usp=sharing"),
+    ("Snapshot-Free, Transparent, and Robust Memory Reclamation for Lock-Free Data Structures", "Arpit Bhayani", "https://drive.google.com/file/d/1PYeZz-CJTh1J8bZ1QeU4b0Ln-zvMCxfr/view?usp=drive_link"),
+    ("The Chubby lock service for loosely-coupled distributed systems", "Arpit Bhayani", "https://drive.google.com/file/d/1o5Rto3ex5iDUONNPJf8Wvp43E7wWpdsR/view?usp=sharing"),
+    ("Bigtable: A Distributed Storage System for Structured Data", "Arpit Bhayani", "https://drive.google.com/file/d/1o7HrswgtMRYTuDOFsEiAnhpRaYhWxpRt/view?usp=drive_link"),
+    ("On-the-fly Sharing for Streamed Aggregation", "Arpit Bhayani", "https://drive.google.com/file/d/156BTit4ZbFdq526_2sdvLBy6WIHV5tmx/view?usp=sharing"),
+    ("MapReduce: Simplified Data Processing on Large Clusters", "Arpit Bhayani", "https://drive.google.com/file/d/1fcJP_WE8j0L-QdxQhBSEzkyel8szFzbH/view?usp=sharing"),
+    ("How to break software", "Arpit Bhayani", "https://drive.google.com/file/d/1zr4qYypLoaW521NX0WIlV_TXKpa8ZuDG/view?usp=sharing"),
+    ("Web Search for a Planet: The Google Cluster Architecture", "Arpit Bhayani", "https://drive.google.com/file/d/1Cs1-ENNZFDcxLh9MB_p7j-IUCboIuwMQ/view?usp=sharing"),
+    ("Amazon DynamoDB: A scalable, predictably performant, and fully managed NoSQL database service", "Arpit Bhayani", "https://drive.google.com/file/d/1ztxrZTh3Gn9WWoqprDCU80MjOoXnL6Es/view?usp=sharing"),
+    ("Amazon Redshift re-invented", "Arpit Bhayani", "https://drive.google.com/file/d/16Pb3BSWkmNJx0Dato3NVt36nDDKbkkRy/view?usp=sharing"),
+    ("Scalable blocking for very large databases", "Arpit Bhayani", "https://drive.google.com/file/d/1RMELaWQ5sPbomHeq5bwwYH79xI6PBiTY/view?usp=sharing"),
+    ("Firecracker: Lightweight virtualization for serverless applications", "Arpit Bhayani", "https://drive.google.com/file/d/1u-eQlDjrVn7lzOmX-Cv2si_Wj16H0Z-h/view?usp=drive_link"),
+    ("Millions of tiny databases", "Arpit Bhayani", "https://drive.google.com/file/d/16K17SnbgAcFM7j7_qsJJwMX8dYBv9t-n/view?usp=drive_link"),
+    ("Amazon Redshift and the Case for Simpler Data Warehouses", "Arpit Bhayani", "https://drive.google.com/file/d/1LwAAnoE2B17AkZ0hU5EBrjwUTcce7qQG/view?usp=drive_link"),
+    ("Amazon Aurora: Design considerations for high throughput cloud-native relational databases", "Arpit Bhayani", "https://drive.google.com/file/d/1Aqp80fFRz6A2KiIxoVgB0gYZecoxgZUW/view?usp=drive_link"),
+    ("Near-duplicate Question Detection", "Arpit Bhayani", "https://drive.google.com/file/d/1MuqS6WO9wFjOFwtQnp590Tz28o_y6Aco/view?usp=drive_link"),
+    ("Striking the right chord: A comprehensive approach to Amazon Music search spell correction", "Arpit Bhayani", "https://drive.google.com/file/d/1SeBP_vLMohz7qlQsOX1pS9hB-8CAGstm/view?usp=drive_link"),
+    ("Stage: Query Execution Time Prediction in Amazon Redshift", "Arpit Bhayani", "https://drive.google.com/file/d/1ZkernfuCbAMQOfbfOvK8Gjb9-JJnQOVg/view?usp=sharing"),
+    ("A flexible large-scale similar product identification system in e-commerce", "Arpit Bhayani", "https://drive.google.com/file/d/16fqZFuri2WWKM6bfsy-HpWe0hWkdWZdV/view?usp=drive_link"),
+    ("Intelligent Scaling in Amazon Redshift", "Arpit Bhayani", "https://drive.google.com/file/d/1E7cb5Ttj21JvI3svJC0QnkhncycX2PS-/view?usp=drive_link"),
+    ("Serverless Runtime / Database Co-Design With Asynchronous I/O", "Arpit Bhayani", "https://drive.google.com/file/d/1nuURga5TdctAorXCRPOraIgiLwT0n6S-/view?usp=sharing"),
+    ("Predicate Caching: Query-Driven Secondary Indexing for Cloud DataWarehouses", "Arpit Bhayani", "https://drive.google.com/file/d/1K-tWD8-SnQbenEajEHKfPOOL7va-3viA/view?usp=drive_link"),
+    ("Query Attribute Recommendation at Amazon Search", "Arpit Bhayani", "https://drive.google.com/file/d/1ItSnpBjjhIyamZFt-82zriHt4Qvo_DBy/view?usp=sharing"),
+    ("ROSE: Robust caches for Amazon product search", "Arpit Bhayani", "https://drive.google.com/file/d/13YwkeCc1XwnRVDVkcuE7MKt2r7aqld24/view?usp=drive_link"),
+    ("The story of AWS Glue", "Arpit Bhayani", "https://drive.google.com/file/d/1CxK5bTV8ZQgNFe3TI582W9N8PyLa5nK3/view?usp=drive_link"),
+    ("DecLog: Decentralized Logging in Non-Volatile Memory for Time Series Database Systems", "Arpit Bhayani", "https://drive.google.com/file/d/1CJwsj-dRcoc_wtkterUQ9l4xtYPOr3On/view?usp=drive_link"),
+    ("SILK: Preventing Latency Spikes in LSM Key-Value Stores", "Arpit Bhayani", "https://drive.google.com/file/d/1RCBW70TNXqGowl4I7cPjRJjzpfZqI0rs/view?usp=drive_link"),
+    ("Umbra: A Disk-Based System with In-Memory Performance", "Arpit Bhayani", "https://drive.google.com/file/d/1V4sahz-i4Z9wFBsZcj3mHxNAoSXaX53x/view?usp=drive_link"),
+    ("Amazon MemoryDB: A fast and durable memory-first cloud database", "Arpit Bhayani", "https://drive.google.com/file/d/1wzSuGMJPShDn5R8SMnam5VXevfeedg7L/view?usp=sharing"),
+    ("Take Out the TraChe: Maximizing (Tra)nsactional Ca(che) Hit Rate", "Arpit Bhayani", "https://drive.google.com/file/d/11BQhr3FtKBHrKFvmtNcmOsOnn9NGQ0li/view?usp=drive_link"),
+    ("Distributed Transactions at Scale in Amazon DynamoDB", "Arpit Bhayani", "https://drive.google.com/file/d/1Yg2R-wN7KKugx-R4yc8c080XsXtBB0JT/view?usp=drive_link"),
+    ("TiDB: A Raft-based HTAP Database", "Arpit Bhayani", "https://drive.google.com/file/d/114Xn8vqP3jrQKNS-9-XdPeLaHMKBO4UV/view?usp=drive_link"),
+    ("Kora: A Cloud-Native Event Streaming Platform For Kafka", "Arpit Bhayani", "https://drive.google.com/file/d/1DwH_8_oqgkv8jNkoITqIYPx2-LZnspBx/view?usp=drive_link"),
+    ("PolarDB-SCC: A Cloud-Native Database", "Arpit Bhayani", "https://drive.google.com/file/d/1HHEsBWa2MZnJ290ZCAEQK6lNc_X4Vp-2/view?usp=drive_link"),
+    ("Epoxy: ACID Transactions Across Diverse Data Stores", "Arpit Bhayani", "https://drive.google.com/file/d/1-fp25FGGIBRqR1MTwG9hUbTm-CMIy9ad/view?usp=drive_link"),
+    ("Scalable OLTP in the Cloud: What’s the BIG DEAL?", "Arpit Bhayani", "https://drive.google.com/file/d/1WOXxSBhoDyWe2ZpmOVBD4tcJiFuJTpHq/view?usp=drive_link"),
+    ("BonsaiKV: Key-Value Store with Tiered and Heterogeneous Memory System", "Arpit Bhayani", "https://drive.google.com/file/d/15ow-jHUbzi9Hvue8VwYebpcO4wrhbZRW/view?usp=drive_link"),
+    ("Automated Unit Test Improvement using Large Language Models at Meta", "Arpit Bhayani", "https://drive.google.com/file/d/1ckfwOOPfg3xTsw2CVoSC8nmlq6LfZoEm/view?usp=drive_link"),
+    ("Designing Access Methods: The RUM Conjecture", "Arpit Bhayani", "https://drive.google.com/file/d/1EeZ4vCy8m0Mb06Z-uc-zbtZfQ30ERF6z/view?usp=drive_link"),
+    ("Probabilistic Counting Algorithms for Database Applications - Flajolet-Martin", "Arpit Bhayani", "https://drive.google.com/file/d/147IAuDTmHuSS74xd27_HD3NKm14euOPT/view?usp=drive_link"),
+    ("Cache-Efficient Top-k Aggregation over High Cardinality Large Datasets", "Arpit Bhayani", "https://drive.google.com/file/d/1fIasc3HCalvsu-CTJp0fyGihiz5xD_UV/view?usp=drive_link"),
+    ("SIEVE - an Efficient Turn-Key Eviction Algorithm for Web Caches", "Arpit Bhayani", "https://drive.google.com/file/d/1CMJMCSXW9MrEe5s9i6EQYoTlmzh-fgzk/view?usp=drive_link"),
+    ("Vector Database: Storage and Retrieval Technique, Challenge", "Arpit Bhayani", "https://drive.google.com/file/d/1HamJjegLEvLSebnEN-uKLWhQTiZ-UJdd/view?usp=drive_link"),
+    ("Panda: Performance Debugging for Databases using LLM Agents", "Arpit Bhayani", "https://drive.google.com/file/d/16zfCBxo-xqhMhrq48dnQmCov-FAn3Lkk/view?usp=drive_link"),
+    ("Magnet: A scalable and performant shuffle architecture for Apache Spark", "Arpit Bhayani", "https://drive.google.com/file/d/1xjKIl7SC8tqJeEdN7wGxg956QHRogo2W/view?usp=sharing"),
+    ("ZIP: Lazy Imputation during Query Processing", "Arpit Bhayani", "https://drive.google.com/file/d/1yuMg3x4kgZ6eHVoWMgBBttH2C6wsJEa-/view?usp=sharing"),
+    ("Anycast as a Load Balancing feature", "Arpit Bhayani", "https://drive.google.com/file/d/1209iTFzMJQDqkPNCneLSp56RyXZqfxoa/view?usp=share_link"),
+    ("The Impact of Thread-Per-Core Architecture on Application Tail Latency", "Arpit Bhayani", "https://drive.google.com/file/d/1EJHkuxRJMxK_yFQpUftKW8LaFr2SQDSC/view?usp=sharing"),
+    ("TreeLine - An Update-In-Place Key-Value Store for Modern Storage", "Arpit Bhayani", "https://drive.google.com/file/d/1MLkQIO9xqSMc6jv9lbqz32lWBRoTLjT_/view?usp=drive_link"),
+    ("Manu: A Cloud Native Vector Database Management System", "Arpit Bhayani", "https://drive.google.com/file/d/1gLl_gSzt6cjnvdPpX40kdaOCiTyMNt4z/view?usp=drive_link"),
+    ("Parallelism-Optimizing Data Placement for Faster Data-Parallel Computations", "Arpit Bhayani", "https://drive.google.com/file/d/1rO1FoyU2F0JrNmf5JOZfuPiYmpanwy6b/view?usp=drive_link"),
+    ("Faster sorting algorithms discovered using deep reinforcement learning", "Arpit Bhayani", "https://drive.google.com/file/d/16n47YlDxbCXG5qZiu258eK-3y8_Aa9Ru/view?usp=sharing"),
+    ("A Relational Model of Data for Large Shared Data Banks", "Arpit Bhayani", "https://drive.google.com/file/d/1_27sKT2kzGCuAL9hEldGO26p_qOhvhS6/view?usp=share_link"),
+    ("Improving Language Understanding by Generative Pre-Training", "Arpit Bhayani", "https://drive.google.com/file/d/1yDyKWk4RhC40jbY2evevDnuuxKpIkAxi/view?usp=share_link"),
+    ("Language Models are Few-Shot Learners", "Arpit Bhayani", "https://drive.google.com/file/d/1ICUPRGbARL1L_JgMrKfrYQ6xKzh46pjT/view?usp=share_link"),
+    ("Attention Is All You Need", "Arpit Bhayani", "https://drive.google.com/file/d/1NI4fHNYauNvH3ynRuhi11Ey5s1-BOpmE/view?usp=share_link"),
+    ("Amazon DynamoDB A Scalable, Predictably Performant, and Fully Managed NoSQL Database Service", "Arpit Bhayani", "https://drive.google.com/file/d/1nA7iL9b_WLlQKhuzAV9RlgsrSrWKDsG4/view?usp=share_link"),
+    ("Dynamo Amazon’s Highly Available Key-value Store", "Arpit Bhayani", "https://drive.google.com/file/d/1dIX26Vyiva_qxO_5syfMa85ynFpVPIDO/view?usp=share_link"),
+    ("The Google File System", "Arpit Bhayani", "https://drive.google.com/file/d/1S_hYRcjdo7aR0ShXuIuK5ePQm2U0FEs2/view?usp=share_link"),
+    ("Neural Machine Translation of Rare Words with Subword Units", "Arpit Bhayani", "https://drive.google.com/file/d/1XTvz9HwZ1mlh7D7tfxlILcMgv7IkWkKp/view?usp=share_link"),
+    ("The Bloom Paradox: When not to Use a Bloom Filter", "Arpit Bhayani", "https://drive.google.com/file/d/1luxcdZBCxo-ty9sgmEQ1rDs5AF4334-3/view"),
+    ("The Deletable Bloom Filter", "Arpit Bhayani", "https://drive.google.com/file/d/1f-LFOroH5WihpfSENXCQJGyM4EWOAgc8/view?usp=share_link"),
+    ("Zanzibar - Google's Consistent, Global Authorization System", "Arpit Bhayani", "https://drive.google.com/file/d/1Z3Uzhm-9dhG1DMhyAwDxMhy989N1BIXG/view?usp=share_link"),
+    ("Space-Time Trade-offs in Hash Coding with Allowable Errors", "Arpit Bhayani", "https://drive.google.com/file/d/1tWyRo5ofJgMmZpXrSMO6FjfGI0_NFS54/view?usp=share_link"),
+    ("Gorilla - A Fast, Scalable, In Memory Time Series Database", "Arpit Bhayani", "https://drive.google.com/file/d/13jFQkD2OmydymjPFLnsvsQUwMwhmynIh/view?usp=sharing"),
+    ("Understanding BitTorrent - An Experimental Perspective", "Arpit Bhayani", "https://drive.google.com/file/d/17lvNCfgI2xwMA65VDBcKSPhq0iJqHXVU/view?usp=sharing"),
+    ("Exploiting BitTorrent For Fun (But Not Profit)", "Arpit Bhayani", "https://drive.google.com/file/d/13qLIQFaytcTUD0pQEhP_7eeqN_Ryv3bh/view?usp=sharing"),
+    ("Rarest First and Choke Algorithms Are Enough", "Arpit Bhayani", "https://drive.google.com/file/d/1GqnGoiQbrbxdn1oVPLVd3z8q-XLaoaIh/view?usp=sharing"),
+    ("Implementation of a BitTorrent client - B. Sc. Thesis", "Arpit Bhayani", "https://drive.google.com/file/d/1mCgITghlVle3rFmJzd3Um7B5Wu_k3shb/view?usp=sharing"),
+    ("Kademlia - a Peer-to-peer Information System based on XOR Metric", "Arpit Bhayani", "https://drive.google.com/file/d/1EREYP8U1jkxsbsLJvjKhSsz7Scc4xo2c/view?usp=sharing"),
+    ("Peer-to-peer networking with BitTorrent", "Arpit Bhayani", "https://drive.google.com/file/d/1VS37P6J3v_trRCHzCOWtS-9lGGcaVq4a/view?usp=sharing"),
+    ("Free Riding in BitTorrent is Cheap", "Arpit Bhayani", "https://drive.google.com/file/d/1JEu085WKpy0I-X_enknDs08TH6bnVc0T/view?usp=sharing"),
+    ("Go To Statement Considered Harmful", "Arpit Bhayani", "https://drive.google.com/file/d/1qMOCSfTgyPKF6HFS1QFrek_A2pRMmwtK/view?usp=sharing"),
+    ("Bitcoin - A Peer-to-Peer Electronic Cash System", "Arpit Bhayani", "https://drive.google.com/file/d/1R0B4ZD67-W4fPmd0EphOXxqWvujZAzHt/view?usp=sharing"),
+    ("Understanding Inverse Document Frequency On theoretical arguments for IDF", "Arpit Bhayani", "https://drive.google.com/file/d/11cw9-riCQ5HJ0R2EOHxRijXfV1r76E7Y/view?usp=sharing"),
+    ("Isolation Forest", "Arpit Bhayani", "https://drive.google.com/file/d/1yTEFQaEizA-4oPuC4I1NI7XDbu1WXm1W/view?usp=sharing"),
+]
+
+ARPIT_NOTES = [
+    ("On-demand Container Loading in AWS Lambda", "Arpit Bhayani", "https://arpitbhayani.me/blogs/on-demand-container-loading-in-aws-lambda"),
+    ("SQL Has Problems. We Can Fix Them Pipe Syntax In SQL", "Arpit Bhayani", "https://arpitbhayani.me/blogs/sql-has-problems-we-can-fix-them-pipe-syntax-in-sql"),
+    ("NanoLog - A Nanosecond Scale Logging System", "Arpit Bhayani", "https://arpitbhayani.me/blogs/nanolog-a-nanosecond-scale-logging-system"),
+    ("WTF - The Who to Follow Service at Twitter", "Arpit Bhayani", "https://arpitbhayani.me/blogs/wtf-the-who-to-follow-service-at-twitter"),
+]
+
 EXTRA_SECTIONS = {
     "📚 Marc Brooker's Essential Reading": {
         "Essential Leslie Lamport": BROOKER_LAMPORT,
@@ -239,8 +352,9 @@ EXTRA_SECTIONS = {
     "🎥 Papers We Love Videos": {
         "All Videos": PWL_VIDEOS,
     },
-    "📝 Arpit Bhayani's Paper Notes": {
-        "Paper Notes": ARPIT_PAPERS,
+    "📝 Arpit Bhayani's Papershelf": {
+        "Paper Breakdowns (PDFs)": ARPIT_BREAKDOWNS,
+        "Paper Notes (Blog)": ARPIT_NOTES,
     },
 }
 
@@ -369,7 +483,7 @@ def build_html():
     unique_acolyer = len(set(p["url"] for v in categories.values() for p in v))
     total_brooker = sum(len(v) for v in EXTRA_SECTIONS["📚 Marc Brooker's Essential Reading"].values())
     total_pwl = sum(len(v) for v in EXTRA_SECTIONS["🎥 Papers We Love Videos"].values())
-    total_arpit = sum(len(v) for v in EXTRA_SECTIONS["📝 Arpit Bhayani's Paper Notes"].values())
+    total_arpit = sum(len(v) for v in EXTRA_SECTIONS["📝 Arpit Bhayani's Papershelf"].values())
 
     all_section_keys = list(SECTIONS.keys()) + list(EXTRA_SECTIONS.keys())
 
@@ -547,7 +661,7 @@ def main():
     print(f"Brooker Lamport: {len(BROOKER_LAMPORT)} papers")
     print(f"Brooker Lynch: {len(BROOKER_LYNCH)} papers")
     print(f"PWL Videos: {len(PWL_VIDEOS)} videos")
-    print(f"Arpit Papers: {len(ARPIT_PAPERS)} paper notes")
+    print(f"Arpit Breakdowns: {len(ARPIT_BREAKDOWNS)} PDFs, Notes: {len(ARPIT_NOTES)} blog posts")
 
 
 if __name__ == "__main__":
