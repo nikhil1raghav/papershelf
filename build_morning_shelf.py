@@ -22,33 +22,32 @@ with open(DATA_FILE) as f:
 # ============================================================
 
 BROOKER_LISKOV = [
-    ("Data abstraction and hierarchy", "Barbara Liskov", "1987", "Foundational paper on abstract data types and the Liskov Substitution Principle"),
-    ("A behavioral notion of subtyping", "Barbara Liskov, Jeannette Wing", "1994", "Formal definition of behavioral subtyping — the 'L' in SOLID"),
-    ("Behavioral subtyping using invariants and constraints", "Barbara Liskov, Jeannette Wing", "1999", "Refinement of behavioral subtyping with invariants"),
-    ("Viewstamped Replication: A New Primary Copy Method to Support Highly Available Distributed Systems", "Brian Oki, Barbara Liskov", "1988", "One of the earliest consensus protocols, predates Paxos"),
-    ("Viewstamped Replication Revisited", "Barbara Liskov, James Cowling", "2012", "Modern, clearer description of Viewstamped Replication"),
-    ("Lazy consistency using loosely synchronized clocks", "Barbara Liskov et al.", "????", "Version vectors using physical clocks for distributed consistency"),
-    ("Practical Byzantine fault tolerance", "Miguel Castro, Barbara Liskov", "1999", "First practical implementation of Byzantine fault tolerance"),
-    ("Byzantine clients rendered harmless", "Rodrigo Rodrigues, Barbara Liskov et al.", "????", "Strengthening BFT protocols against client misbehavior"),
+    ("Data abstraction and hierarchy", "Barbara Liskov", "1987", "Foundational paper on abstract data types and the Liskov Substitution Principle", "https://dl.acm.org/doi/10.1145/62138.62141"),
+    ("A behavioral notion of subtyping", "Barbara Liskov, Jeannette Wing", "1994", "Formal definition of behavioral subtyping — the 'L' in SOLID", "https://dl.acm.org/doi/10.1145/197320.197383"),
+    ("Behavioral subtyping using invariants and constraints", "Barbara Liskov, Jeannette Wing", "1999", "Refinement of behavioral subtyping with invariants", "https://link.springer.com/chapter/10.1007/3-540-48118-4_18"),
+    ("Viewstamped Replication: A New Primary Copy Method to Support Highly Available Distributed Systems", "Brian Oki, Barbara Liskov", "1988", "One of the earliest consensus protocols, predates Paxos", "https://dl.acm.org/doi/10.1145/62546.62549"),
+    ("Viewstamped Replication Revisited", "Barbara Liskov, James Cowling", "2012", "Modern, clearer description of Viewstamped Replication", "http://pmg.csail.mit.edu/papers/vr-revisited.pdf"),
+    ("Practical Byzantine fault tolerance", "Miguel Castro, Barbara Liskov", "1999", "First practical implementation of Byzantine fault tolerance", "http://pmg.csail.mit.edu/papers/osdi99.pdf"),
+    ("Byzantine clients rendered harmless", "Rodrigo Rodrigues, Barbara Liskov", "2005", "Strengthening BFT protocols against client misbehavior", "https://pmg.csail.mit.edu/papers/bft-harmless.pdf"),
 ]
 
 BROOKER_LAMPORT = [
-    ("A New Solution of Dijkstra's Concurrent Programming Problem", "Leslie Lamport", "1974", "The Bakery algorithm — mutual exclusion without hardware support"),
-    ("Time, Clocks and the Ordering of Events in a Distributed System", "Leslie Lamport", "1978", "Logical clocks, happened-before relation, replicated state machines — 8000+ citations"),
-    ("Distributed Snapshots: Determining Global States of a Distributed System", "K. Mani Chandy, Leslie Lamport", "1985", "The Chandy-Lamport snapshot algorithm"),
-    ("What Good Is Temporal Logic?", "Leslie Lamport", "1983", "Philosophy and practice of temporal logic for specifying concurrent systems"),
-    ("The Part-Time Parliament", "Leslie Lamport", "1998 (submitted 1990)", "The original Paxos consensus algorithm paper — famously told as a parable of ancient Greece"),
-    ("Paxos Made Simple", "Leslie Lamport", "2001", "Simplified, more accessible explanation of the Paxos algorithm"),
-    ("The Byzantine Generals Problem", "Leslie Lamport, Robert Shostak, Marshall Pease", "1982", "Foundational paper on Byzantine fault tolerance in distributed systems"),
-    ("The Implementation of Reliable Distributed Multiprocess Systems", "Leslie Lamport", "1978", "Expands on replicated state machines from Time, Clocks paper"),
+    ("A New Solution of Dijkstra's Concurrent Programming Problem", "Leslie Lamport", "1974", "The Bakery algorithm — mutual exclusion without hardware support", "https://dl.acm.org/doi/10.1145/361179.361202"),
+    ("Time, Clocks and the Ordering of Events in a Distributed System", "Leslie Lamport", "1978", "Logical clocks, happened-before relation, replicated state machines — 8000+ citations", "https://dl.acm.org/doi/10.1145/359545.359563"),
+    ("Distributed Snapshots: Determining Global States of a Distributed System", "K. Mani Chandy, Leslie Lamport", "1985", "The Chandy-Lamport snapshot algorithm", "https://dl.acm.org/doi/10.1145/214451.214456"),
+    ("What Good Is Temporal Logic?", "Leslie Lamport", "1983", "Philosophy and practice of temporal logic for specifying concurrent systems", "https://dl.acm.org/doi/10.5555/1624056.1624060"),
+    ("The Part-Time Parliament", "Leslie Lamport", "1998 (submitted 1990)", "The original Paxos consensus algorithm paper — famously told as a parable of ancient Greece", "https://dl.acm.org/doi/10.1145/279227.279229"),
+    ("Paxos Made Simple", "Leslie Lamport", "2001", "Simplified, more accessible explanation of the Paxos algorithm", "https://lamport.azurewebsites.net/pubs/paxos-simple.pdf"),
+    ("The Byzantine Generals Problem", "Leslie Lamport, Robert Shostak, Marshall Pease", "1982", "Foundational paper on Byzantine fault tolerance in distributed systems", "https://dl.acm.org/doi/10.1145/357172.357176"),
+    ("The Implementation of Reliable Distributed Multiprocess Systems", "Leslie Lamport", "1978", "Expands on replicated state machines from Time, Clocks paper", "https://dl.acm.org/doi/10.5555/889804"),
 ]
 
 BROOKER_LYNCH = [
-    ("A Hundred Impossibility Proofs for Distributed Computing", "Nancy Lynch", "1989", "Massive survey of impossibility results across distributed systems — 103 references"),
-    ("Brewer's conjecture and the feasibility of consistent, available, partition-tolerant web services", "Seth Gilbert, Nancy Lynch", "2002", "Formal proof of the CAP theorem"),
-    ("Consensus in the Presence of Partial Synchrony", "Cynthia Dwork, Nancy Lynch, Larry Stockmeyer", "1988", "One of three foundational consensus solutions from the 1980s"),
-    ("Impossibility of distributed consensus with one faulty process", "Michael Fischer, Nancy Lynch, Michael Paterson", "1985", "The FLP result — no asynchronous consensus protocol can tolerate even one failure"),
-    ("Reaching approximate agreement in the presence of faults", "Danny Dolev, Nancy Lynch et al.", "1986", "When exact consensus is impossible, how close can you get?"),
+    ("A Hundred Impossibility Proofs for Distributed Computing", "Nancy Lynch", "1989", "Massive survey of impossibility results across distributed systems — 103 references", "https://dl.acm.org/doi/10.1145/72981.72982"),
+    ("Brewer's conjecture and the feasibility of consistent, available, partition-tolerant web services", "Seth Gilbert, Nancy Lynch", "2002", "Formal proof of the CAP theorem", "https://dl.acm.org/doi/10.1145/564585.564601"),
+    ("Consensus in the Presence of Partial Synchrony", "Cynthia Dwork, Nancy Lynch, Larry Stockmeyer", "1988", "One of three foundational consensus solutions from the 1980s", "https://dl.acm.org/doi/10.1145/42282.42283"),
+    ("Impossibility of distributed consensus with one faulty process", "Michael Fischer, Nancy Lynch, Michael Paterson", "1985", "The FLP result — no asynchronous consensus protocol can tolerate even one failure", "https://dl.acm.org/doi/10.1145/3149.214121"),
+    ("Reaching approximate agreement in the presence of faults", "Danny Dolev, Nancy Lynch et al.", "1986", "When exact consensus is impossible, how close can you get?", "https://dl.acm.org/doi/10.1145/5925.5931"),
 ]
 
 # ============================================================
@@ -307,12 +306,17 @@ def build_extra_section(section_name, subsections):
         tag_id = sub_name.lower().replace(" ", "-").replace(",", "").replace(":", "").replace(".", "")
         post_items = ""
         for p in papers:
-            if len(p) == 4:  # Brooker: (title, authors, year, description)
-                title, authors, year, desc = p
-                post_items += f'                    <li class="py-2"><div class="text-stone-900 dark:text-stone-50">{esc(title)}</div><div class="text-xs text-stone-900/50 dark:text-stone-50/50 mt-0.5">{esc(authors)} · {year} — {esc(desc)}</div></li>\n'
-            elif len(p) == 5:  # PWL: (title, presenter, chapter, date, url)
-                title, presenter, chapter, date, url = p
-                post_items += f'                    <li><a href="{url}" class="block py-1 hover:text-[#C8102E] transition-colors motion-safe:transition-colors"><span class="text-stone-900/70 dark:text-stone-50/70 text-xs tabular-nums mr-2">{date}</span>{esc(title)}</a><span class="text-xs text-stone-900/40 dark:text-stone-50/40 ml-2">{esc(presenter)} · {esc(chapter)}</span></li>\n'
+            if len(p) == 5:
+                third = p[2]
+                if third and third[:4].isdigit():
+                    # Brooker: (title, authors, year, description, url)
+                    title, authors, year, desc, url = p
+                    title_link = f'<a href="{url}" target="_blank" rel="noopener" class="hover:text-[#C8102E] underline decoration-stone-300/50 hover:decoration-[#C8102E]/40 underline-offset-2 transition-colors motion-safe:transition-colors">{esc(title)}</a>'
+                    post_items += f'                    <li class="py-2"><div class="text-stone-900 dark:text-stone-50">{title_link}</div><div class="text-xs text-stone-900/50 dark:text-stone-50/50 mt-0.5">{esc(authors)} · {year} — {esc(desc)}</div></li>\n'
+                else:
+                    # PWL: (title, presenter, chapter, date, url)
+                    title, presenter, chapter, date, url = p
+                    post_items += f'                    <li><a href="{url}" class="block py-1 hover:text-[#C8102E] transition-colors motion-safe:transition-colors"><span class="text-stone-900/70 dark:text-stone-50/70 text-xs tabular-nums mr-2">{date}</span>{esc(title)}</a><span class="text-xs text-stone-900/40 dark:text-stone-50/40 ml-2">{esc(presenter)} · {esc(chapter)}</span></li>\n'
             elif len(p) == 3:  # Arpit: (title, author, url)
                 title, author, url = p
                 post_items += f'                    <li><a href="{url}" class="block py-1 hover:text-[#C8102E] transition-colors motion-safe:transition-colors">{esc(title)}</a><span class="text-xs text-stone-900/40 dark:text-stone-50/40 ml-2">— {esc(author)}</span></li>\n'
