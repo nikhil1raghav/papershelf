@@ -556,6 +556,15 @@ def build_html():
     <!-- Footer -->
     <footer class="py-16 border-t border-stone-200 dark:border-stone-800">
         <div class="max-w-5xl mx-auto px-4 md:px-8 text-center">
+            <p class="text-sm text-stone-900/50 dark:text-stone-50/50 mb-3">Made with love by
+                <a href="https://nikhilraghav.xyz/" target="_blank" rel="noopener" class="text-stone-900 dark:text-stone-50 hover:text-[#C8102E] transition-colors motion-safe:transition-colors">Nikhil Raghav</a>
+            </p>
+            <div class="flex justify-center gap-4 mb-8">
+                <a href="https://www.instagram.com/nikhilswe" target="_blank" rel="noopener" class="text-xs text-stone-900/40 dark:text-stone-50/40 hover:text-[#C8102E] transition-colors motion-safe:transition-colors">Instagram</a>
+                <a href="https://www.linkedin.com/in/nikhil1raghav/" target="_blank" rel="noopener" class="text-xs text-stone-900/40 dark:text-stone-50/40 hover:text-[#C8102E] transition-colors motion-safe:transition-colors">LinkedIn</a>
+                <a href="https://github.com/nikhil1raghav" target="_blank" rel="noopener" class="text-xs text-stone-900/40 dark:text-stone-50/40 hover:text-[#C8102E] transition-colors motion-safe:transition-colors">GitHub</a>
+                <a href="https://nikhilraghav.xyz/" target="_blank" rel="noopener" class="text-xs text-stone-900/40 dark:text-stone-50/40 hover:text-[#C8102E] transition-colors motion-safe:transition-colors">Website</a>
+            </div>
             <p class="text-xs text-stone-900/40 dark:text-stone-50/40">
                 Papershelf · Generated {now}<br>
                 Acolyer papers © Adrian Colyer · Brooker lists © Marc Brooker · PWL videos © Papers We Love · Arpit notes © Arpit Bhayani<br>
