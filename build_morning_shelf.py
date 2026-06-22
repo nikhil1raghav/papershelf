@@ -181,13 +181,102 @@ PWL_VIDEOS = [
 ]
 
 # ============================================================
+# DISTRIBUTED SYSTEMS SUB-CATEGORIZATION
+# ============================================================
+
+DS_SUB_RULES = [
+    ("Consensus, Replication & Consistency",
+     ["consensus", "paxos", "raft", "bft", "viewstamped", "atomic broadcast", "zab", "quorum", "consistency", "replicat", "Linearizability", "Serializability", "fault", "leased", "leader", "calm"],
+     ["Consistency", "Transaction processing", "Blockchain"]),
+    ("Shared Logs, Coordination & Locks",
+     ["shared log", "corfu", "fuzzylog", "coordination", "lock", "chubby", "zookeeper", "drinking philosopher", "blaze", "common knowledge", "heard-of", "extensible distributed", "life beyond distributed"],
+     ["Concurrency"]),
+    ("Observability, Tracing & Debugging",
+     ["tracing", "debugg", "partial failure", "pivot", "dapper", "kraken", "monitoring", "log recon", "profiler", "lprof", "bigdebug", "random test", "canopy", "mystery machine", "app-bisect", "seer"],
+     ["Operations", "Testing"]),
+    ("Distributed Storage, Databases & Memory",
+     ["aurora", "calvin", "anna", "ramcloud", "vcorfu", "tachyon", "ipfs", "faw", "memory disagg", "infiniswap", "hopfs", "checkpoint"],
+     ["Datastores", "Storage"]),
+    ("Networking & Communication",
+     ["rpc", "maglev", "kv-direct", "network", "load balanc", "brownout", "cross-layer"],
+     ["Networking"]),
+    ("Scheduling & Resource Management",
+     ["borg", "yarn", "schedul", "provision", "morpheus", "heracles", "hcloud", "blade", "panopticon", "tail at scale", "smoothoperator", "slicer"],
+     ["Scheduling"]),
+    ("Formal Methods, Verification & Theory",
+     ["formal", "verif", "model check", "ironfleet", "proof", "virtual time", "snapshot", "termination", "tla", "samc"],
+     ["Formal methods"]),
+    ("Performance, Benchmarking & Resilience",
+     ["benchmark", "performance", "wsmete", "cherrypick", "skyway", "fit", "overload", "resilien", "cloudburst", "serverless", "occupy"],
+     ["Performance"]),
+    ("Infrastructure at Scale",
+     ["warehouse", "datacenter", "microservice", "servicefabric", "gray failure", "brownout"],
+     ["Google", "Facebook", "Amazon", "Microsoft", "Containers"]),
+    ("Distributed ML, Dataflows & Edge",
+     ["tensorflow", "machine learning", "deep learn", "deep neural", "petuum", "geeps", "dataflow", "derflow", "edge", "offload", "sttr", "scootr", "spark", "actor"],
+     ["Machine Learning", "Deep Learning", "Data Science"]),
+    ("Software Design & Programming Models",
+     ["local-first", "end-to-end", "reading list", "fire swamp", "design", "programming model", "internet-scale", "scalability! but", "data on the outside", "cost?"],
+     ["Software Engineering", "Programming Languages"]),
+    ("CRDTs & Convergent Types",
+     ["crdt", "replicated data type", "mergeable", "convergent", "delta state", "commutative"],
+     []),
+]
+
+def split_ds_papers(categories):
+    """Split Distributed Systems papers into thematic sub-categories."""
+    ds_papers = categories.get("Distributed Systems", [])
+    if not ds_papers:
+        return {}
+    
+    # Build a URL -> set of tags map for quick lookup
+    url_tags = {}
+    for tag_name, tag_papers in categories.items():
+        for p in tag_papers:
+            url_tags.setdefault(p["url"], set()).add(tag_name)
+    
+    buckets = {name: [] for name, _, _ in DS_SUB_RULES}
+    buckets["Other Distributed Systems"] = []
+    
+    for p in ds_papers:
+        title_lower = p["title"].lower()
+        ptags = url_tags.get(p["url"], set())
+        assigned = False
+        for sub_name, keywords, co_tags in DS_SUB_RULES:
+            if any(kw in title_lower for kw in keywords):
+                buckets[sub_name].append(p)
+                assigned = True
+                break
+            if any(ct in ptags for ct in co_tags):
+                buckets[sub_name].append(p)
+                assigned = True
+                break
+        if not assigned:
+            buckets["Other Distributed Systems"].append(p)
+    
+    # Remove empty buckets
+    return {k: v for k, v in buckets.items() if v}
+
+
+# ============================================================
 # HIGH-LEVEL SECTION MAPPING
 # ============================================================
 
 SECTIONS = {
-    "Distributed Systems & Consensus": [
-        "Distributed Systems", "Consistency", "Concurrency",
-        "Blockchain", "Transaction processing"
+    "Distributed Systems": [
+        "DS::Consensus, Replication & Consistency",
+        "DS::Shared Logs, Coordination & Locks",
+        "DS::Observability, Tracing & Debugging",
+        "DS::Distributed Storage, Databases & Memory",
+        "DS::Networking & Communication",
+        "DS::Scheduling & Resource Management",
+        "DS::Formal Methods, Verification & Theory",
+        "DS::Performance, Benchmarking & Resilience",
+        "DS::Infrastructure at Scale",
+        "DS::Distributed ML, Dataflows & Edge",
+        "DS::Software Design & Programming Models",
+        "DS::CRDTs & Convergent Types",
+        "DS::Other Distributed Systems",
     ],
     "Machine Learning & AI": [
         "Machine Learning", "Deep Learning", "AI",
@@ -195,7 +284,8 @@ SECTIONS = {
     ],
     "Database Systems & Data Engines": [
         "Datastores", "Storage", "Stream processing",
-        "Time series", "Graph", "Web Scale"
+        "Time series", "Graph", "Web Scale",
+        "Transaction processing"
     ],
     "Software Engineering, Testing, & Security": [
         "Software Engineering", "Testing", "Security",
@@ -203,7 +293,8 @@ SECTIONS = {
     ],
     "Operating Systems, Networks, & Hardware": [
         "Operating Systems", "Networking", "Hardware",
-        "Containers", "Virtualization", "IoT", "mobile", "Scheduling"
+        "Containers", "Virtualization", "IoT", "mobile",
+        "Scheduling", "Concurrency"
     ],
     "Programming Languages & Algorithms": [
         "Programming Languages", "Programming",
@@ -214,7 +305,8 @@ SECTIONS = {
     ],
     "More Topics": [
         "Great moments", "HCI", "Provenance", "quantum",
-        "Robotics", "Social Networks"
+        "Robotics", "Social Networks", "Blockchain",
+        "Consistency"
     ],
 }
 
@@ -374,19 +466,21 @@ def build_acolyer_section(section_name, tag_names, categories):
         if not posts:
             continue
         total += len(posts)
+        # Strip DS:: prefix for display
+        display_name = tag_name.replace("DS::", "") if tag_name.startswith("DS::") else tag_name
         post_items = ""
         for p in posts:
             title = esc(p["title"])
             url = esc(p["url"])
             date = p.get("date", "")
             post_items += f'                    <li><a href="{url}" class="block py-1 hover:text-[#C8102E] transition-colors motion-safe:transition-colors"><span class="text-stone-900/70 dark:text-stone-50/70 text-xs tabular-nums mr-2">{date}</span>{title}</a></li>\n'
-        tag_id = tag_name.lower().replace(" ", "-").replace(",", "")
+        tag_id = display_name.lower().replace(" ", "-").replace(",", "")
         tags_html += f"""
                 <div class="border border-stone-200 dark:border-stone-800 rounded-sm">
                     <button onclick="toggleCategory('{tag_id}')"
                             class="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors motion-safe:transition-colors focus-visible:ring-2 focus-visible:ring-[#C8102E] focus-visible:outline-none min-h-[44px]"
                             aria-expanded="false" aria-controls="cat-{tag_id}">
-                        <span class="text-base font-medium text-stone-900 dark:text-stone-50">{tag_name}</span>
+                        <span class="text-base font-medium text-stone-900 dark:text-stone-50">{display_name}</span>
                         <span class="flex items-center gap-2">
                             <span class="text-xs text-stone-900/40 dark:text-stone-50/40 tabular-nums">{len(posts)}</span>
                             <svg class="w-4 h-4 text-stone-900/40 dark:text-stone-50/40 transition-transform motion-safe:transition-transform" id="icon-{tag_id}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -466,6 +560,12 @@ def build_extra_section(section_name, subsections):
 
 def build_html():
     categories = acolyer["categories"]
+    
+    # Split Distributed Systems papers into sub-categories
+    ds_subs = split_ds_papers(categories)
+    for sub_name, papers in ds_subs.items():
+        categories[f"DS::{sub_name}"] = papers
+    
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     # Build Acolyer sections
@@ -528,30 +628,30 @@ def build_html():
 <body class="bg-stone-50 dark:bg-stone-950 text-stone-900 dark:text-stone-50 antialiased">
 
     <!-- Header -->
-    <header class="border-b border-stone-200 dark:border-stone-800 sticky top-0 bg-stone-50/95 dark:bg-stone-950/95 backdrop-blur-sm z-10">
-        <div class="max-w-5xl mx-auto px-4 md:px-8 py-6">
-            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4">
+    <header id="site-header" class="border-b border-stone-200 dark:border-stone-800 sticky top-0 bg-stone-50/95 dark:bg-stone-950/95 backdrop-blur-sm z-10 transition-all motion-safe:transition-all duration-200">
+        <div class="max-w-5xl mx-auto px-4 md:px-8 py-6 transition-all motion-safe:transition-all duration-200" id="header-inner">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-4" id="header-top">
                 <div>
-                    <h1 class="text-3xl md:text-4xl font-light tracking-tight text-stone-900 dark:text-stone-50 text-balance">Papershelf</h1>
-                    <p class="text-sm text-stone-900/50 dark:text-stone-50/50 mt-1">A curated index of Computer Science paper breakdowns from across the web</p>
+                    <h1 class="text-3xl md:text-4xl font-light tracking-tight text-stone-900 dark:text-stone-50 text-balance transition-all motion-safe:transition-all duration-200" id="header-title">Papershelf</h1>
+                    <p class="text-sm text-stone-900/50 dark:text-stone-50/50 mt-1" id="header-subtitle">A curated index of Computer Science paper breakdowns from across the web</p>
                 </div>
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-4" id="header-count">
                     <span class="text-xs text-stone-900/40 dark:text-stone-50/40 tabular-nums">{total_acolyer + total_brooker + total_pwl + total_arpit} entries · {unique_acolyer} Acolyer papers + {total_brooker} Brooker refs + {total_pwl} PWL videos + {total_arpit} Arpit notes</span>
                 </div>
             </div>
             <!-- Search -->
-            <div class="mt-4 relative">
+            <div class="mt-4 relative" id="header-search">
                 <input type="text" id="search" placeholder="Search all papers…"
                        class="w-full px-4 py-2 bg-stone-100 dark:bg-stone-900 border border-stone-200 dark:border-stone-800 rounded-sm text-base text-stone-900 dark:text-stone-50 placeholder:text-stone-900/30 dark:placeholder:text-stone-50/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C8102E] transition-colors motion-safe:transition-colors"
                        oninput="filterPapers()">
                 <span id="search-count" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-stone-900/30 dark:text-stone-50/30 hidden"></span>
             </div>
             <!-- Quick nav -->
-            <nav class="mt-4 flex flex-wrap gap-2" aria-label="Jump to section">
+            <nav class="mt-4 flex flex-wrap gap-2" aria-label="Jump to section" id="header-nav">
                 {''.join(f'<a href="#{s.lower().replace(" ", "-").replace(",", "").replace("&", "and").replace("📚", "").replace("🎥", "").replace("📝", "").replace(":", "").strip()}" class="text-xs px-2 py-1 bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-sm hover:border-[#C8102E]/40 hover:text-[#C8102E] transition-colors motion-safe:transition-colors focus-visible:ring-2 focus-visible:ring-[#C8102E] focus-visible:outline-none min-h-[44px] min-w-[44px] inline-flex items-center">{s}</a>' for s in all_section_keys)}
             </nav>
             <!-- Sources -->
-            <div class="mt-3 flex flex-wrap gap-3 text-xs text-stone-900/40 dark:text-stone-50/40">
+            <div class="mt-3 flex flex-wrap gap-3 text-xs text-stone-900/40 dark:text-stone-50/40" id="header-sources">
                 <span>Sources: <a href="https://blog.acolyer.org" class="underline hover:text-[#C8102E]">The Morning Paper</a> · <a href="https://brooker.co.za/blog/" class="underline hover:text-[#C8102E]">Marc Brooker</a> · <a href="https://paperswelove.org/videos/" class="underline hover:text-[#C8102E]">Papers We Love</a> · <a href="https://arpitbhayani.me/papershelf/" class="underline hover:text-[#C8102E]">Arpit Bhayani</a></span>
             </div>
         </div>
@@ -593,6 +693,49 @@ def build_html():
     </footer>
 
     <script>
+        // Compact header on scroll
+        (function() {{
+            const header = document.getElementById('site-header');
+            const inner = document.getElementById('header-inner');
+            const title = document.getElementById('header-title');
+            const subtitle = document.getElementById('header-subtitle');
+            const count = document.getElementById('header-count');
+            const search = document.getElementById('header-search');
+            const nav = document.getElementById('header-nav');
+            const sources = document.getElementById('header-sources');
+            let scrolled = false;
+
+            window.addEventListener('scroll', function() {{
+                const isScrolled = window.scrollY > 10;
+                if (isScrolled === scrolled) return;
+                scrolled = isScrolled;
+
+                if (isScrolled) {{
+                    inner.classList.add('py-2');
+                    inner.classList.remove('py-6');
+                    title.classList.add('text-lg', 'md:text-xl');
+                    title.classList.remove('text-3xl', 'md:text-4xl');
+                    search.classList.add('mt-1');
+                    search.classList.remove('mt-4');
+                    subtitle.classList.add('hidden');
+                    count.classList.add('hidden');
+                    nav.classList.add('hidden');
+                    sources.classList.add('hidden');
+                }} else {{
+                    inner.classList.remove('py-2');
+                    inner.classList.add('py-6');
+                    title.classList.remove('text-lg', 'md:text-xl');
+                    title.classList.add('text-3xl', 'md:text-4xl');
+                    search.classList.remove('mt-1');
+                    search.classList.add('mt-4');
+                    subtitle.classList.remove('hidden');
+                    count.classList.remove('hidden');
+                    nav.classList.remove('hidden');
+                    sources.classList.remove('hidden');
+                }}
+            }}, {{ passive: true }});
+        }})();
+
         function toggleCategory(id) {{
             const panel = document.getElementById('cat-' + id);
             const icon = document.getElementById('icon-' + id);
