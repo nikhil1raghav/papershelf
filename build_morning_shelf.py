@@ -496,6 +496,17 @@ def build_html():
     <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)">
     <title>Papershelf · Paper Index</title>
+    <meta name="description" content="A curated index of CS papers from across the web">
+    <meta property="og:title" content="Papershelf">
+    <meta property="og:description" content="A curated index of CS papers from across the web">
+    <meta property="og:image" content="https://raw.githubusercontent.com/nikhil1raghav/papershelf/main/papershelf-og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Papershelf">
+    <meta name="twitter:description" content="A curated index of CS papers from across the web">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/nikhil1raghav/papershelf/main/papershelf-og.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
