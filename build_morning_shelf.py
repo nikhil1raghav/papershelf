@@ -500,8 +500,8 @@ def build_html():
     <meta property="og:title" content="Papershelf">
     <meta property="og:description" content="A curated index of CS papers from across the web">
     <meta property="og:image" content="https://raw.githubusercontent.com/nikhil1raghav/papershelf/main/papershelf-og.png">
-    <meta property="og:image:width" content="570">
-    <meta property="og:image:height" content="188">
+    <meta property="og:image:width" content="1424">
+    <meta property="og:image:height" content="752">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Papershelf">
