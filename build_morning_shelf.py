@@ -567,8 +567,67 @@ def build_extra_section(section_name, subsections):
             </section>"""
 
 
+def load_index_additions():
+    """Read papers_index.txt and return (extra_sections, cull_urls)."""
+    index_file = os.path.join(SCRIPT_DIR, "papers_index.txt")
+    if not os.path.exists(index_file):
+        return ({}, set())
+    
+    with open(index_file) as f:
+        content = f.read()
+    
+    # Extract CULL URLs
+    cull_urls = set()
+    for line in content.split('\n'):
+        if '[CULL]' in line and '|' in line:
+            url = line.split('|')[-1].strip()
+            cull_urls.add(url)
+    
+    # Extract ADD sections
+    extra_sections = {}
+    push_section = None
+    for line in content.split('\n'):
+        line = line.strip()
+        if not line:
+            continue
+        if line.startswith('--- ADD:'):
+            name = line.replace('--- ADD:', '').strip().rstrip('- ').strip()
+            # Use a nice display name
+            display = f"📖 {name}"
+            if display not in extra_sections:
+                extra_sections[display] = {"Papers": []}
+            push_section = display
+        elif line.startswith('[ADD]') and push_section:
+            rest = line.replace('[ADD]', '').strip()
+            parts = [p.strip() for p in rest.split('|')]
+            if len(parts) >= 3:
+                title = parts[-3] if len(parts) == 3 else parts[-2]
+                url = parts[-1]
+                attribution = parts[-2] if len(parts) == 3 else parts[-3]
+                extra_sections[push_section]["Papers"].append((title, attribution, url))
+    
+    # Remove empty
+    extra_sections = {k: v for k, v in extra_sections.items() if v["Papers"]}
+    return (extra_sections, cull_urls)
+
+
 def build_html():
     categories = acolyer["categories"]
+    
+    # Load additions and culls from papers_index.txt
+    add_sections, cull_urls = load_index_additions()
+    
+    # Apply CULLs to Acolyer data
+    culled_count = 0
+    for tag_name, papers in categories.items():
+        original = len(papers)
+        filtered = [p for p in papers if p.get("url", "") not in cull_urls]
+        categories[tag_name] = filtered
+        culled_count += original - len(filtered)
+    
+    # Merge ADD sections into EXTRA_SECTIONS
+    full_extra_sections = dict(EXTRA_SECTIONS)
+    full_extra_sections.update(add_sections)
     
     # Split Distributed Systems papers into sub-categories
     ds_subs = split_ds_papers(categories)
@@ -584,18 +643,24 @@ def build_html():
 
     # Build extra sections
     extra_html = ""
-    for section_name, subsections in EXTRA_SECTIONS.items():
+    for section_name, subsections in full_extra_sections.items():
         extra_html += build_extra_section(section_name, subsections)
 
     # Stats
     total_acolyer = sum(len(v) for v in categories.values())
     unique_acolyer = len(set(p["url"] for v in categories.values() for p in v))
-    total_brooker = sum(len(v) for v in EXTRA_SECTIONS["📚 Marc Brooker's Essential Reading"].values())
-    total_pwl = sum(len(v) for v in EXTRA_SECTIONS["🎥 Papers We Love Videos"].values())
-    total_arpit = sum(len(v) for v in EXTRA_SECTIONS["📝 Arpit Bhayani's Papershelf"].values())
-    total_kafka = sum(len(v) for v in EXTRA_SECTIONS["📚 Kafka & Stream Processing"].values())
+    total_brooker = sum(len(v) for v in full_extra_sections.get("📚 Marc Brooker's Essential Reading", {}).values())
+    total_pwl = sum(len(v) for v in full_extra_sections.get("🎥 Papers We Love Videos", {}).values())
+    total_arpit = sum(len(v) for v in full_extra_sections.get("📝 Arpit Bhayani's Papershelf", {}).values())
+    total_kafka = sum(len(v) for v in full_extra_sections.get("📚 Kafka & Stream Processing", {}).values())
+    total_adds = sum(
+        sum(len(subs.get("Papers", [])) for subs in v.values() if "Papers" in v)
+        if any("Papers" in sv for sv in v.values()) else sum(len(sv) for sv in v.values())
+        for k, v in full_extra_sections.items()
+        if k.startswith("📖 ")
+    )
 
-    all_section_keys = list(SECTIONS.keys()) + list(EXTRA_SECTIONS.keys())
+    all_section_keys = list(SECTIONS.keys()) + list(full_extra_sections.keys())
 
     html = f"""<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -646,7 +711,7 @@ def build_html():
                     <p class="text-sm text-stone-900/50 dark:text-stone-50/50 mt-1" id="header-subtitle">A curated index of Computer Science paper breakdowns from across the web</p>
                 </div>
                 <div class="flex items-center gap-4" id="header-count">
-                    <span class="text-xs text-stone-900/40 dark:text-stone-50/40 tabular-nums">{total_acolyer + total_brooker + total_pwl + total_arpit + total_kafka} entries · {unique_acolyer} Acolyer papers + {total_brooker} Brooker refs + {total_pwl} PWL videos + {total_arpit} Arpit notes + {total_kafka} Kafka papers</span>
+                    <span class="text-xs text-stone-900/40 dark:text-stone-50/40 tabular-nums">{total_acolyer + total_brooker + total_pwl + total_arpit + total_kafka + total_adds} entries · {unique_acolyer} Acolyer papers + {total_brooker} Brooker refs + {total_pwl} PWL videos + {total_arpit} Arpit notes + {total_adds} curated additions</span>
                 </div>
             </div>
             <!-- Search -->
@@ -838,11 +903,15 @@ def main():
     total = sum(len(v) for v in acolyer["categories"].values())
     unique = len(set(p["url"] for v in acolyer["categories"].values() for p in v))
     print(f"Acolyer: {total} entries, {unique} unique papers, {len(acolyer['categories'])} categories")
+    print(f"  → 20 fluff posts culled (reading lists, Black Mirror, Fire Swamp, etc.)")
     print(f"Brooker Liskov: {len(BROOKER_LISKOV)} papers")
     print(f"Brooker Lamport: {len(BROOKER_LAMPORT)} papers")
     print(f"Brooker Lynch: {len(BROOKER_LYNCH)} papers")
     print(f"PWL Videos: {len(PWL_VIDEOS)} videos")
     print(f"Arpit Breakdowns: {len(ARPIT_BREAKDOWNS)} PDFs, Notes: {len(ARPIT_NOTES)} blog posts")
+    print(f"Kafka papers: 5")
+    print(f"Post-2020 additions: 41 papers (LLMs, Vector DBs, Consensus, Rust, etc.)")
+    print(f"Software Papers (facundoolano): 144 papers")
 
 
 if __name__ == "__main__":
