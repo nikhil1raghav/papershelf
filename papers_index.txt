@@ -2042,3 +2042,150 @@ To ADD a paper, write: [ADD] Title | URL at end of a section or under NEW.
   [ADD] 2023 | Alpa: Automating Inter- and Intra-Operator Parallelism | https://dl.acm.org/doi/10.1145/3575693.3575735
   [ADD] 2023 | Orchestrating LLM Inference on GPU Clusters | https://arxiv.org/abs/2308.14394
   [ADD] 2024 | Quantization for LLMs: A Survey | https://arxiv.org/abs/2401.01325
+
+
+--- ADD: Software Papers (facundoolano/software-papers) ---
+[ADD] 1970 | Von Neumann's First Computer Program | Knuth | https://dl.acm.org/doi/pdf/10.1145/356580.356581
+[ADD] 1950 | Computing Machinery and Intelligence | Turing | https://www.csee.umbc.edu/courses/471/papers/turing.pdf
+[ADD] 1952 | A Method for the Construction of Minimum-Redundancy Codes | Huffman | http://compression.ru/download/articles/huff/huffman_1952_minimum-redundancy-codes.pdf
+[ADD] 1993 | Engineering a Sort Function | Bentley, McIlroy | https://cs.fit.edu/~pkc/classes/writing/samples/bentley93engineering.pdf
+[ADD] 1972 | A Design Methodology for Reliable Software Systems | Liskov | https://dl.acm.org/doi/pdf/10.1145/1479992.1480018
+[ADD] 2012 | Programming Paradigms for Dummies: What Every Programmer Should Know | Van Roy | https://webperso.info.ucl.ac.be/~pvr/VanRoyChapter.pdf
+[ADD] 2006 | An Incremental Approach to Compiler Construction | Ghuloum | http://scheme2006.cs.uchicago.edu/11-ghuloum.pdf
+[ADD] 1987 | No Silver Bullet: Essence and Accidents of Software Engineering | Brooks | http://worrydream.com/refs/Brooks-NoSilverBullet.pdf
+[ADD] 1978 | Communicating sequential processes | Hoare | https://dl.acm.org/doi/pdf/10.1145/359576.359585
+[ADD] 1974 | The UNIX Time- Sharing System | Ritchie, Thompson | https://dsf.berkeley.edu/cs262/unix.pdf
+[ADD] 1970 | A Relational Model of Data for Large Shared Data Banks | Codd | https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf
+[ADD] 1974 | A Protocol for Packet Network Intercommunication | Cerf, Kahn | https://www.cs.princeton.edu/courses/archive/fall06/cos561/papers/cerf74.pdf
+[ADD] 1976 | New Directions in Cryptography | Diffie, Hellman | https://ee.stanford.edu/~hellman/publications/24.pdf
+[ADD] 1978 | Time, Clocks, and the Ordering of Events in a Distributed System | Lamport | https://lamport.azurewebsites.net/pubs/time-clocks.pdf
+[ADD] 1985 | Designing for Usability: Key Principles and What Designers Think | Gould, Lewis | https://dl.acm.org/doi/pdf/10.1145/3166.3170
+[ADD] 1998 | The anatomy of a large-scale hypertextual Web search engine | Brin, Page | https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/334.pdf
+[ADD] 2007 | Dynamo, Amazon’s Highly Available Key-value store | DeCandia et al | https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf
+[ADD] 2007 | On Designing and Deploying Internet Scale Services | Hamilton | https://s3.amazonaws.com/systemsandpapers/papers/hamilton.pdf
+[ADD] 2008 | Bitcoin, A peer-to-peer electronic cash system | Nakamoto | https://bitcoin.org/bitcoin.pdf
+[ADD] 2012 | A Few Useful Things to Know About Machine Learning | Domingos | https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf
+[ADD] 1952 | The Education of a Computer | Hopper | https://people.cs.umass.edu/~emery/classes/cmpsci691st/readings/PL/p243-hopper.pdf
+[ADD] 1960 | Recursive Programming | Dijkstra | https://www.ics.uci.edu/~jajones/INF102-S18/readings/07_dijkstra.pdf
+[ADD] 1965 | Programming Considered as a Human Activity | Dijkstra | https://www.cs.utexas.edu/~EWD/transcriptions/EWD01xx/EWD117.html
+[ADD] 1968 | Goto Statement Considered Harmful | Dijkstra | https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf
+[ADD] 1971 | Program development by stepwise refinement | Wirth | https://dl.acm.org/doi/pdf/10.1145/362575.362577
+[ADD] 1972 | The Humble Programmer | Dijkstra | http://rkka21.ru/docs/turing-award/ed1972e.pdf
+[ADD] 1974 | Computer Programming as an Art | Knuth | http://www.cs.bilkent.edu.tr/~canf/knuth1974.pdf
+[ADD] 1979 | The paradigms of programming | Floyd | https://dl.acm.org/doi/pdf/10.1145/1283920.1283934
+[ADD] 1984 | Literate Programming | Knuth | http://www.literateprogramming.com/knuthweb.pdf
+[ADD] 1960 | Some Moral and Technical Consequences of Automation | Wiener | https://nissenbaum.tech.cornell.edu/papers/Wiener.pdf
+[ADD] 1960 | Steps towards Artificial Intelligence | Minsky | http://worrydream.com/refs/Minsky%20-%20Steps%20Toward%20Artificial%20Intelligence.pdf
+[ADD] 1966 | ELIZA—a computer program for the study of natural language communication between man and machine | Weizenbaum | http://web.stanford.edu/class/cs124/p36-weizenabaum.pdf
+[ADD] 1984 | A Theory of the Learnable | Valiant | https://people.mpi-inf.mpg.de/~mehlhorn/SeminarEvolvability/ValiantLearnable.pdf
+[ADD] 1950 | Prediction and Entropy of Printed English | Shannon | https://www.princeton.edu/~wbialek/rome/refs/shannon_51.pdf
+[ADD] 1977 | A Universal Algorithm for Sequential Data Compression | Ziv, Lempel | https://courses.cs.duke.edu/spring03/cps296.5/papers/ziv_lempel_1977_universal_algorithm.pdf
+[ADD] 1998 | Fifty Years of Shannon Theory | Verdú | https://monoskop.org/images/7/78/Verdu_Sergio_1998_Fifty_Years_of_Shannon_Theory.pdf
+[ADD] 1956 | On the Shortest Spanning Subtree of a Graph and the Traveling Salesman Problem | Kruskal | https://www.cs.yale.edu/homes/lans/readings/routing/kruskal-1956.pdf
+[ADD] 1959 | A Note on Two Problems in Connexion with Graphs | Dijkstra | https://jmvidal.cse.sc.edu/library/dijkstra59a.pdf
+[ADD] 1962 | Quicksort | Hoare | https://dl.acm.org/doi/pdf/10.5555/63445.C1104357
+[ADD] 1970 | Space/Time Trade-offs in Hash Coding with Allowable Errors | Bloom | https://dl.acm.org/doi/pdf/10.1145/362686.362692
+[ADD] 1979 | The Ubiquitous B-Tree | Comer | http://carlosproal.com/ir/papers/p121-comer.pdf
+[ADD] 1984 | Programming pearls: Algorithm design techniques | Bentley | https://dl.acm.org/doi/pdf/10.1145/358234.381162
+[ADD] 1984 | Programming pearls: The back of the envelope | Bentley | https://dl.acm.org/doi/pdf/10.1145/357994.381168
+[ADD] 1986 | Making data structures persistent | Driscoll et al | https://dl.acm.org/doi/pdf/10.1145/12130.12142
+[ADD] 1972 | On the Criteria To Be Used in Decomposing Systems into Modules | Parnas | https://dl.acm.org/doi/pdf/10.1145/361598.361623
+[ADD] 1972 | Information Distribution Aspects of Design Methodology | Parnas | https://cseweb.ucsd.edu/~wgg/CSE218/Parnas-IFIP71-information-distribution.PDF
+[ADD] 1974 | Programming with Abstract Data Types | Liskov, Zilles | https://dl.acm.org/doi/pdf/10.1145/942572.807045
+[ADD] 1979 | Designing Software for Ease of Extension and Contraction | Parnas | https://courses.cs.washington.edu/courses/cse503/08wi/parnas-1979.pdf
+[ADD] 1985 | Programming as Theory Building | Naur | https://pages.cs.wisc.edu/~remzi/Naur.pdf
+[ADD] 2015 | Towards a Theory of Conceptual Design for Software | Jackson | https://groups.csail.mit.edu/sdg/pubs/2015/concept-essay.pdf
+[ADD] 1960 | Recursive Functions of Symbolic Expressions and Their Computation by Machine | McCarthy | http://jmc.stanford.edu/articles/recursive/recursive.pdf
+[ADD] 1976 | The Semantics of Predicate Logic as a Programming Language | Van Emden, Kowalski | https://dl.acm.org/doi/pdf/10.1145/321978.321991
+[ADD] 1978 | The Smalltalk-76 Programming System Design and Implementation | Ingalls | https://dl.acm.org/doi/pdf/10.1145/512760.512762
+[ADD] 1978 | A Theory of Type Polymorphism in Programming | Milner | https://homepages.inf.ed.ac.uk/wadler/papers/papers-we-love/milner-type-polymorphism.pdf
+[ADD] 1981 | The Semantic Elegance of Applicative Languages | Turner | http://nsl.com/misc/sasl/paraffins-turner.pdf
+[ADD] 1985 | On understanding types, data abstraction, and polymorphism | Cardelli, Wegner | https://dl.acm.org/doi/pdf/10.1145/6041.6042
+[ADD] 1990 | Why Functional Programming Matters | Hughes | https://www.cs.kent.ac.uk/people/staff/dat/miranda/whyfp90.pdf
+[ADD] 1991 | SELF: The Power of Simplicity | Ungar, Smith | https://people.eecs.berkeley.edu/~fateman/264/papers/selfpower.ps
+[ADD] 1992 | The essence of functional programming | Wadler | https://dl.acm.org/doi/pdf/10.1145/143165.143169
+[ADD] 2000 | QuickCheck: A Lightweight Tool for Random Testing of Haskell Programs | Claessen, Hughes | https://dl.acm.org/doi/pdf/10.1145/351240.351266
+[ADD] 2006 | Church's Thesis and Functional Programming | Turner | https://kar.kent.ac.uk/88944/1/ctfp.pdf_nocoversheet
+[ADD] 1966 | The Next 700 Programming Languages | Landin | https://www.cs.cmu.edu/~crary/819-f09/Landin66.pdf
+[ADD] 1986 | Programming pearls: little languages | Bentley | https://dl.acm.org/doi/pdf/10.1145/6424.315691
+[ADD] 1993 | The Essence of Compiling with Continuations | Flanagan et al | https://dl.acm.org/doi/pdf/10.1145/173262.155113
+[ADD] 2003 | A Brief History of Just-In-Time | Aycock | https://www.cs.tufts.edu/comp/150CMP/papers/aycock03jit.pdf
+[ADD] 2004 | LLVM: A Compilation Framework for Lifelong Program Analysis & Transformation | Lattner, Adve | https://llvm.org/pubs/2004-01-30-CGO-LLVM.pdf
+[ADD] 2004 | A Unified Theory of Garbage Collection | Bacon, Cheng, Rajan | https://courses.cs.washington.edu/courses/cse590p/05au/p50-bacon.pdf
+[ADD] 2005 | A Nanopass Framework for Compiler Education | Sarkar, Waddell, Dybvig | https://www.cambridge.org/core/services/aop-cambridge-core/content/view/1E378B9B451270AF6A155FA0C21C04A3/S0956796805005605a.pdf/educational_pearl_a_nanopass_framework_for_compiler_education.pdf
+[ADD] 2017 | Bringing the Web up to Speed with WebAssembly | Haas | https://dl.acm.org/doi/pdf/10.1145/3062341.3062363
+[ADD] 1970 | Managing the Development of Large Software Systems | Royce | https://dl.acm.org/doi/pdf/10.5555/41765.41801
+[ADD] 1975 | The Mythical Man Month | Brooks | https://www.cs.virginia.edu/~evans/greatworks/mythical.pdf
+[ADD] 1991 | On Building Systems That Will Fail | Corbató | https://dl.acm.org/doi/pdf/10.1145/114669.114686
+[ADD] 1994 | Software Aging | Parnas | https://dl.acm.org/doi/pdf/10.5555/257734.257788
+[ADD] 1997 | Laws of Software Evolution Revisited | Lehman | https://www.rose-hulman.edu/Class/csse/csse490/cs490-const-and-evol/LawsOfSoftwareEvolutionRevisited.pdf
+[ADD] 1998 | The Cathedral and the Bazaar | Raymond | http://users.ece.utexas.edu/~perry/education/382v-s08/papers/raymond.pdf
+[ADD] 2006 | Out of the Tar Pit | Moseley, Marks | http://curtclifton.net/papers/MoseleyMarks06a.pdf
+[ADD] 1965 | Solution Of a Problem in Concurrent Program Control | Dijkstra | https://dl.acm.org/doi/pdf/10.1145/365559.365617
+[ADD] 1974 | Monitors: An operating system structuring concept | Hoare | https://dl.acm.org/doi/pdf/10.1145/355620.361161
+[ADD] 1978 | On the Duality of Operating System Structures | Lauer, Needham | https://dl.acm.org/doi/pdf/10.1145/850657.850658
+[ADD] 1997 | Software Transactional Memory | Shavit, Touitou | https://groups.csail.mit.edu/tds/papers/Shavit/ShavitTouitou.pdf
+[ADD] 1962 | An Experimental Time-Sharing System | Corbató, Merwin Daggett, Daley | http://larch-www.lcs.mit.edu:8001/~corbato/sjcc62/
+[ADD] 1968 | The Structure of the \"THE\"-Multiprogramming System | Dijkstra | https://www.eecs.ucf.edu/~eurip/papers/dijkstra-the68.pdf
+[ADD] 1970 | The nucleus of a multiprogramming system | Hansen | http://www.brinch-hansen.net/papers/1970a.pdf
+[ADD] 1984 | Reflections on Trusting Trust | Thompson | https://www.cs.cmu.edu/~rdriley/487/papers/Thompson_1984_ReflectionsonTrustingTrust.pdf
+[ADD] 1991 | The Design and Implementation of a Log-Structured File System | Rosenblum, Ousterhout | https://people.eecs.berkeley.edu/~brewer/cs262/LFS.pdf
+[ADD] 1975 | Granularity of Locks and Degrees of Consistency in a Shared Data Base | Gray et al | https://www.cs.cmu.edu/~natassa/courses/15-721/papers/GrayLocks.pdf
+[ADD] 1979 | Access Path Selection in a Relational Database Management System | Selinger et al | https://courses.cs.duke.edu/compsci516/cps216/spring03/papers/selinger-etal-1979.pdf
+[ADD] 1981 | The Transaction Concept: Virtues and Limitations | Gray | https://jimgray.azurewebsites.net/papers/theTransactionConcept.pdf
+[ADD] 1986 | The design of POSTGRES | Stonebraker, Rowe | https://dl.acm.org/doi/pdf/10.1145/16856.16888
+[ADD] 1999 | Rules of Thumb in Data Engineering | Gray, Shenay | http://research.microsoft.com/en-us/um/people/gray/papers/ms_tr_99_100_rules_of_thumb_in_data_engineering.pdf
+[ADD] 1978 | Ethernet: Distributed packet switching for local computer networks | Metcalfe, Boggs | https://dl.acm.org/doi/pdf/10.1145/360248.360253
+[ADD] 1984 | End-To-End Arguments in System Design | Saltzer, Reed, Clark | https://groups.csail.mit.edu/ana/Publications/PubPDFs/End-to-End%20Arguments%20in%20System%20Design.pdf
+[ADD] 1985 | An algorithm for distributed computation of a Spanning Tree in an Extended LAN | Perlman | https://dl.acm.org/doi/pdf/10.1145/319056.319004
+[ADD] 1988 | The Design Philosophy of the DARPA Internet Protocols | Clark | http://ccr.sigcomm.org/archive/1995/jan95/ccr-9501-clark.pdf
+[ADD] 2004 | TOR: The second generation onion router | Dingledine et al | https://svn-archive.torproject.org/svn/projects/design-paper/tor-design.pdf
+[ADD] 2006 | Why the Internet only just works | Handley | https://www2.cs.uh.edu/~gnawali/courses/cosc6377-f17/papers/Handley06.pdf
+[ADD] 2014 | The Network is Reliable | Bailis,  Kingsbury | https://queue.acm.org/detail.cfm?id=2655736
+[ADD] 1978 | A Method for Obtaining Digital Signatures and Public-Key Cryptosystems | Rivest, Shamir, Adleman | https://dl.acm.org/doi/pdf/10.1145/359340.359342
+[ADD] 1979 | How To Share A Secret | Shamir | https://web.mit.edu/6.857/OldStuff/Fall03/ref/Shamir-HowToShareASecret.pdf
+[ADD] 1987 | A Digital Signature Based on a Conventional Encryption Function | Merkle | https://people.eecs.berkeley.edu/~raluca/cs261-f15/readings/merkle.pdf
+[ADD] 2007 | The Salsa20 family of stream ciphers | Bernstein | https://cr.yp.to/snuffle/salsafamily-20071225.pdf
+[ADD] 1974 | Self-stabilizing systems in spite of distributed control | Dijkstra | https://dl.acm.org/doi/pdf/10.1145/361179.361202
+[ADD] 1982 | The Byzantine Generals Problem | Lamport, Shostak, Pease | https://lamport.azurewebsites.net/pubs/byz.pdf
+[ADD] 1985 | Impossibility of Distributed Consensus With One Faulty Process | Fisher, Lynch, Patterson | https://groups.csail.mit.edu/tds/papers/Lynch/jacm85.pdf
+[ADD] 1990 | Implementing Fault-Tolerant Services Using the State Machine Approach: A Tutorial | Schneider | https://www.cs.cornell.edu/fbs/publications/SMSurvey.pdf
+[ADD] 1999 | Practical Byzantine Fault Tolerance | Castro, Liskov | https://css.csail.mit.edu/6.824/2014/papers/castro-practicalbft.pdf
+[ADD] 2007 | Paxos made live - An Engineering Perspective | Chandra, Griesemer, Redstone | https://www.cs.utexas.edu/users/lorenzo/corsi/cs380d/papers/paper2-1.pdf
+[ADD] 2014 | In Search of an Understandable Consensus Algorithm | Ongaro, Ousterhout | https://raft.github.io/raft.pdf
+[ADD] 1945 | As We May Think | Bush | https://web.mit.edu/STS.035/www/PDFs/think.pdf
+[ADD] 1958 | Man-Computer symbiosis | Licklider | http://worrydream.com/refs/Licklider%20-%20Man-Computer%20Symbiosis.pdf
+[ADD] 1965 | Some Thoughts About the Social Implications of Accessible Computing | David, Fano | https://dl.acm.org/doi/pdf/10.1145/1463891.1463917
+[ADD] 1981 | Tutorials for the First-Time Computer User | Al-Awar, Chapanis, Ford | https://drive.google.com/file/d/1zA4LkSHoanjjhOVCwYzrkdkdzgPbKWJ9/view?usp=sharing
+[ADD] 1982 | The star user interface: an overview | Smith, Irby, Kimball | https://dl.acm.org/doi/pdf/10.1145/1500774.1500840
+[ADD] 1983 | Design Principles for Human-Computer Interfaces | Norman | https://dl.acm.org/doi/pdf/10.1145/800045.801571
+[ADD] 1997 | Human-Computer Interaction: Psychology as a Science of Design | Carroll | https://home.cs.colorado.edu/~martin/Csci6402/Papers/carroll97.pdf
+[ADD] 1972 | A Statistical Interpretation of Term Specificity in Retrieval | Spärck Jones | http://openlib.org/home/krichel/courses/lis618/readings/spaerk-jones72.pdf
+[ADD] 1990 | Information Management: A Proposal | Berners-Lee | https://cds.cern.ch/record/369245/files/dd-89-001.pdf
+[ADD] 1998 | The PageRank Citation Ranking: Bringing Order to the Web | Page, Brin, Motwani | https://www.cis.upenn.edu/~mkearns/teaching/NetworkedLife/pagerank.pdf
+[ADD] 2003 | The Google File System | Ghemawat, Gobioff, Leung | https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/035fc972c796d33122033a0614bc94cff1527999.pdf
+[ADD] 2004 | MapReduce: Simplified Data Processing on Large Clusters | Dean, Ghemawat | https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/16cb30b4b92fd4989b8619a61752a2387c6dd474.pdf
+[ADD] 2006 | Bigtable: A Distributed Storage System for Structured Data | Chang et al | https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/68a74a85e1662fe02ff3967497f31fda7f32225c.pdf
+[ADD] 2010 | ZooKeeper: wait-free coordination for internet scale systems | Hunt et al | https://www.usenix.org/legacy/event/atc10/tech/full_papers/Hunt.pdf
+[ADD] 2010 | The Hadoop Distributed File System | Shvachko et al | https://cse.buffalo.edu/~okennedy/courses/papers/hdfs.pdf
+[ADD] 2011 | Kafka: a Distributed Messaging System for Log Processing | Kreps, Narkhede, Rao | http://notes.stephenholiday.com/Kafka.pdf
+[ADD] 2012 | CAP Twelve Years Later: How the "Rules" Have Changed | Brewer | https://sites.cs.ucsb.edu/~rich/class/cs293b-cloud/papers/brewer-cap.pdf
+[ADD] 2017 | Amazon Aurora: Design Considerations for High Throughput Cloud-Native Relational Databases | Verbitski et al | https://pages.cs.wisc.edu/~yxy/cs764-f20/papers/aurora-sigmod-17.pdf
+[ADD] 1983 | Ironies of Automation | Bainbridge | https://ckrybus.com/static/papers/Bainbridge_1983_Automatica.pdf
+[ADD] 2002 | Recovery Oriented Computing (ROC): Motivation, Definition, Techniques, and Case Studies | Patterson et al | http://www2.eecs.berkeley.edu/Pubs/TechRpts/2002/CSD-02-1175.pdf
+[ADD] 2003 | Crash-Only Software | Candea, Fox | https://research.cs.wisc.edu/areas/os/ReadingGroup/os-old/Papers/HotOSIX/Candea-CrashOnlySoftware.pdf
+[ADD] 2009 | Building on Quicksand | Helland, Campbell | https://arxiv.org/pdf/0909.1788
+[ADD] 1998 | Operational transformation in real-time group editors: issues, algorithms, and achievements | Sun, Ellis | https://dl.acm.org/doi/pdf/10.1145/289444.289469
+[ADD] 2002 | Kademlia: A Peer-to-Peer Information System Based on the XOR Metric | Maymounkov, Mazières | https://pdos.csail.mit.edu/~petar/papers/maymounkov-kademlia-lncs.pdf
+[ADD] 2003 | Incentives Build Robustness in BitTorrent | Cohen | https://www.bittorrent.org/bittorrentecon.pdf
+[ADD] 2011 | Conflict-free Replicated Data Types | Shapiro et al | https://inria.hal.science/hal-00932836/file/CRDTs_SSS-2011.pdf
+[ADD] 2014 | IPFS - Content Addressed, Versioned, P2P File System | Benet | https://raw.githubusercontent.com/ipfs/papers/master/ipfs-cap2pfs/ipfs-p2p-file-system.pdf
+[ADD] 2014 | Ethereum: A Next-Generation Smart Contract and Decentralized Application Platform | Buterin | https://ethereum.org/content/whitepaper/whitepaper-pdf/Ethereum_Whitepaper_-_Buterin_2014.pdf
+[ADD] 2019 | Local-First Software: You Own Your Data, in spite of the Cloud | Kleppmann et al | https://www.inkandswitch.com/local-first/static/local-first.pdf
+[ADD] 2001 | Statistical Modeling: The Two Cultures | Breiman | https://projecteuclid.org/journalArticle/Download?urlId=10.1214%2Fss%2F1009213726
+[ADD] 2009 | The Unreasonable Effectiveness of Data | Halevy, Norvig, Pereira | https://storage.googleapis.com/gweb-research2023-media/pubtools/pdf/35179.pdf
+[ADD] 2012 | ImageNet Classification with Deep Convolutional Neural Networks | Krizhevsky, Sutskever, Hinton | https://www.cs.cmu.edu/~epxing/Class/10715-14f/reading/imagenet.pdf
+[ADD] 2013 | Playing Atari with Deep Reinforcement Learning | Mnih et al | https://arxiv.org/pdf/1312.5602.pdf
+[ADD] 2014 | Generative Adversarial Nets | Goodfellow et al | https://arxiv.org/pdf/1406.2661
+[ADD] 2015 | Deep Learning | LeCun, Bengio, Hinton | https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf
+[ADD] 2017 | Attention Is All You Need | Vaswani et al | https://arxiv.org/pdf/1706.03762.pdf
