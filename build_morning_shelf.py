@@ -277,28 +277,50 @@ SECTIONS = {
         "DS::Software Design & Programming Models",
         "DS::CRDTs & Convergent Types",
         "DS::Other Distributed Systems",
+        "ADD: Modern Consensus",
+        "ADD: Distributed Systems Classics",
+        "ADD: Internet-Scale Systems",
     ],
     "Machine Learning & AI": [
         "Machine Learning", "Deep Learning", "AI",
-        "Data Science", "Analytics"
+        "Data Science", "Analytics",
+        "ADD: LLMs & Foundation Models",
+        "ADD: ML Systems & Infrastructure",
+        "ADD: Early AI Classics",
     ],
     "Database Systems & Data Engines": [
         "Datastores", "Storage", "Stream processing",
         "Time series", "Graph", "Web Scale",
-        "Transaction processing"
+        "Transaction processing",
+        "ADD: Vector & Graph Databases",
+        "ADD: Modern Databases",
+        "ADD: Stream Processing",
+        "ADD: Database Classics",
     ],
     "Software Engineering, Testing, & Security": [
         "Software Engineering", "Testing", "Security",
-        "Privacy", "Formal methods", "Ethics", "Operations"
+        "Privacy", "Formal methods", "Ethics", "Operations",
+        "ADD: Software Design Classics",
+        "ADD: Software Engineering Classics",
+        "ADD: Cryptography Classics",
+        "ADD: Operations & Reliability",
     ],
     "Operating Systems, Networks, & Hardware": [
         "Operating Systems", "Networking", "Hardware",
         "Containers", "Virtualization", "IoT", "mobile",
-        "Scheduling", "Concurrency"
+        "Scheduling", "Concurrency",
+        "ADD: Cloud Infrastructure",
+        "ADD: Concurrency Classics",
+        "ADD: Operating Systems Classics",
+        "ADD: Networking Classics",
     ],
     "Programming Languages & Algorithms": [
         "Programming Languages", "Programming",
-        "Algorithms and data structures"
+        "Algorithms and data structures",
+        "ADD: Systems Programming",
+        "ADD: Data Structures & Algorithms",
+        "ADD: Programming Paradigms",
+        "ADD: Language Design & Compilers",
     ],
     "By Company": [
         "Amazon", "Facebook", "Google", "Microsoft"
@@ -306,7 +328,12 @@ SECTIONS = {
     "More Topics": [
         "Great moments", "HCI", "Provenance", "quantum",
         "Robotics", "Social Networks", "Blockchain",
-        "Consistency"
+        "Consistency",
+        "ADD: Computer History",
+        "ADD: Information Theory",
+        "ADD: HCI Classics",
+        "ADD: Information Retrieval Classics",
+        "ADD: Decentralized & P2P Systems",
     ],
 }
 
@@ -460,6 +487,15 @@ EXTRA_SECTIONS = {
 }
 
 
+def section_id(name):
+    """Generate a clean HTML id from a section name."""
+    import re
+    # Remove emoji and unicode symbols
+    clean = re.sub(r'[^\w\s-]', '', name, flags=re.UNICODE)
+    clean = clean.replace(' ', '-').replace('--', '-').strip('-')
+    return clean.lower()
+
+
 def esc(text):
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
 
@@ -477,6 +513,8 @@ def build_acolyer_section(section_name, tag_names, categories):
         total += len(posts)
         # Strip DS:: prefix for display
         display_name = tag_name.replace("DS::", "") if tag_name.startswith("DS::") else tag_name
+        if display_name.startswith("ADD: "):
+            display_name = display_name[5:]
         post_items = ""
         for p in posts:
             title = esc(p["title"])
@@ -501,9 +539,9 @@ def build_acolyer_section(section_name, tag_names, categories):
                         <ul class="px-4 pb-3 space-y-0.5 max-h-[60vh] overflow-y-auto">{post_items}                        </ul>
                     </div>
                 </div>"""
-    section_id = section_name.lower().replace(" ", "-").replace(",", "").replace("&", "and")
+    sid = section_id(section_name)
     return f"""
-            <section class="py-16 md:py-20 border-b border-stone-200 dark:border-stone-800" id="{section_id}">
+            <section class="py-16 md:py-20 border-b border-stone-200 dark:border-stone-800" id="{sid}">
                 <div class="max-w-5xl mx-auto px-4 md:px-8">
                     <div class="flex items-baseline justify-between mb-8">
                         <h2 class="text-2xl md:text-3xl font-light tracking-tight text-stone-900 dark:text-stone-50 text-balance">{section_name}</h2>
@@ -554,9 +592,9 @@ def build_extra_section(section_name, subsections):
                         <ul class="px-4 pb-3 space-y-0.5 max-h-[60vh] overflow-y-auto">{post_items}                        </ul>
                     </div>
                 </div>"""
-    section_id = section_name.lower().replace(" ", "-").replace(",", "").replace("&", "and").replace("📚", "").replace("🎥", "").replace("📝", "").replace(":", "").strip()
+    sid = section_id(section_name)
     return f"""
-            <section class="py-16 md:py-20 border-b border-stone-200 dark:border-stone-800" id="{section_id}">
+            <section class="py-16 md:py-20 border-b border-stone-200 dark:border-stone-800" id="{sid}">
                 <div class="max-w-5xl mx-auto px-4 md:px-8">
                     <div class="flex items-baseline justify-between mb-8">
                         <h2 class="text-2xl md:text-3xl font-light tracking-tight text-stone-900 dark:text-stone-50 text-balance">{section_name}</h2>
@@ -568,54 +606,131 @@ def build_extra_section(section_name, subsections):
 
 
 def load_index_additions():
-    """Read papers_index.txt and return (extra_sections, cull_urls)."""
+    """Read papers_index.txt and facundoolano README.
+    Returns (add_tags, cull_urls) where add_tags maps tag_name -> list of paper dicts."""
+    import re
     index_file = os.path.join(SCRIPT_DIR, "papers_index.txt")
-    if not os.path.exists(index_file):
-        return ({}, set())
-    
-    with open(index_file) as f:
-        content = f.read()
-    
-    # Extract CULL URLs
     cull_urls = set()
-    for line in content.split('\n'):
-        if '[CULL]' in line and '|' in line:
-            url = line.split('|')[-1].strip()
-            cull_urls.add(url)
     
-    # Extract ADD sections
-    extra_sections = {}
-    push_section = None
-    for line in content.split('\n'):
-        line = line.strip()
-        if not line:
-            continue
-        if line.startswith('--- ADD:'):
-            name = line.replace('--- ADD:', '').strip().rstrip('- ').strip()
-            # Use a nice display name
-            display = f"📖 {name}"
-            if display not in extra_sections:
-                extra_sections[display] = {"Papers": []}
-            push_section = display
-        elif line.startswith('[ADD]') and push_section:
-            rest = line.replace('[ADD]', '').strip()
-            parts = [p.strip() for p in rest.split('|')]
-            if len(parts) >= 3:
-                title = parts[-3] if len(parts) == 3 else parts[-2]
-                url = parts[-1]
-                attribution = parts[-2] if len(parts) == 3 else parts[-3]
-                extra_sections[push_section]["Papers"].append((title, attribution, url))
+    # Maps ADD section name (from papers_index.txt) -> new tag name
+    ADD_SECTION_MAP = {
+        "LLMs (2021-2026)": "ADD: LLMs & Foundation Models",
+        "ML Systems": "ADD: ML Systems & Infrastructure",
+        "Vector & Graph Databases": "ADD: Vector & Graph Databases",
+        "Databases": "ADD: Modern Databases",
+        "Data & Stream Processing": "ADD: Stream Processing",
+        "Modern Consensus & Distributed Systems": "ADD: Modern Consensus",
+        "Cloud-Native Infrastructure": "ADD: Cloud Infrastructure",
+        "Systems Programming": "ADD: Systems Programming",
+    }
+    FACUNDO_MAP = {
+        "Computer History": "ADD: Computer History",
+        "Early Artificial Intelligence": "ADD: Early AI Classics",
+        "Information Theory": "ADD: Information Theory",
+        "Data Structures": "ADD: Data Structures & Algorithms",
+        "Software Design": "ADD: Software Design Classics",
+        "Programming Paradigms": "ADD: Programming Paradigms",
+        "Language Design": "ADD: Language Design & Compilers",
+        "Software Engineering": "ADD: Software Engineering Classics",
+        "Concurrency": "ADD: Concurrency Classics",
+        "Operating Systems": "ADD: Operating Systems Classics",
+        "Databases": "ADD: Database Classics",
+        "Networking": "ADD: Networking Classics",
+        "Cryptography": "ADD: Cryptography Classics",
+        "Distributed Systems": "ADD: Distributed Systems Classics",
+        "Human-Computer Interaction": "ADD: HCI Classics",
+        "Information Retrieval": "ADD: Information Retrieval Classics",
+        "Internet Scale Data Systems": "ADD: Internet-Scale Systems",
+        "Operations": "ADD: Operations & Reliability",
+        "Decentralized Distributed Systems": "ADD: Decentralized & P2P Systems",
+    }
     
-    # Remove empty
-    extra_sections = {k: v for k, v in extra_sections.items() if v["Papers"]}
-    return (extra_sections, cull_urls)
+    add_tags = {}
+    
+    if os.path.exists(index_file):
+        with open(index_file) as f:
+            content = f.read()
+        
+        for line in content.split('\n'):
+            if '[CULL]' in line and '|' in line:
+                url = line.split('|')[-1].strip()
+                cull_urls.add(url)
+        
+        current_add_section = None
+        for line in content.split('\n'):
+            line = line.strip()
+            if not line:
+                continue
+            if line.startswith('--- ADD:'):
+                name = line.replace('--- ADD:', '').strip().rstrip('- ').strip()
+                if 'software-papers' in name.lower() or 'facundoolano' in name.lower():
+                    current_add_section = None  # handled via README
+                    continue
+                tag = ADD_SECTION_MAP.get(name)
+                if tag:
+                    current_add_section = tag
+                    add_tags.setdefault(tag, [])
+                else:
+                    current_add_section = None
+            elif line.startswith('[ADD]') and current_add_section:
+                rest = line.replace('[ADD]', '').strip()
+                parts = [p.strip() for p in rest.split('|')]
+                if len(parts) >= 3:
+                    title = parts[1]  # Always index 1 for title
+                    url = parts[-1]    # Always last for url
+                    add_tags[current_add_section].append({"title": title, "url": url})
+    
+    # Parse facundoolano README
+    facundo_file = "/tmp/software-papers.md"
+    if os.path.exists(facundo_file):
+        with open(facundo_file) as f:
+            content = f.read()
+        lines = content.split('\n')
+        current_topic_raw = None
+        facundo_tags = {}
+        i = 0
+        while i < len(lines):
+            line = lines[i]
+            m = re.match(r'\d+\.\s+\*\*(.+?)\.\s*\[(.+?)\s+\((\d{4})\)\]\((.+?)\)\.\*\*', line)
+            if m:
+                if i + 2 < len(lines) and '<sub>' in lines[i+2]:
+                    tag_m = re.search(r'<sub>(.+?)</sub>', lines[i+2])
+                    if tag_m:
+                        current_topic_raw = tag_m.group(1).strip()
+                        short = current_topic_raw.split(';')[0].strip()
+                        tag = FACUNDO_MAP.get(short)
+                        if tag:
+                            facundo_tags.setdefault(tag, [])
+                            current_topic_raw = short
+                title = m.group(1).strip()
+                author = m.group(2).strip()
+                url = m.group(4)
+                tag = FACUNDO_MAP.get(current_topic_raw, "") if current_topic_raw else ""
+                if tag:
+                    facundo_tags[tag].append({"title": title, "url": url})
+                i += 3
+                continue
+            m = re.match(r'\s+\*\s+(.+?)\.\s*\[(.+?)\s+\((\d{4})\)\]\((.+?)\)\.?$', line)
+            if m and current_topic_raw:
+                title = m.group(1).strip()
+                url = m.group(4)
+                tag = FACUNDO_MAP.get(current_topic_raw, "")
+                if tag:
+                    facundo_tags.setdefault(tag, [])
+                    facundo_tags[tag].append({"title": title, "url": url})
+            i += 1
+        # Merge facundo tags into add_tags
+        for tag, papers in facundo_tags.items():
+            add_tags.setdefault(tag, []).extend(papers)
+    
+    return (add_tags, cull_urls)
 
 
 def build_html():
     categories = acolyer["categories"]
     
     # Load additions and culls from papers_index.txt
-    add_sections, cull_urls = load_index_additions()
+    add_tags, cull_urls = load_index_additions()
     
     # Apply CULLs to Acolyer data
     culled_count = 0
@@ -625,9 +740,11 @@ def build_html():
         categories[tag_name] = filtered
         culled_count += original - len(filtered)
     
-    # Merge ADD sections into EXTRA_SECTIONS
-    full_extra_sections = dict(EXTRA_SECTIONS)
-    full_extra_sections.update(add_sections)
+    # Merge ADD papers into categories as first-class tags
+    for tag, papers in add_tags.items():
+        if tag not in categories:
+            categories[tag] = []
+        categories[tag].extend(papers)
     
     # Split Distributed Systems papers into sub-categories
     ds_subs = split_ds_papers(categories)
@@ -643,24 +760,19 @@ def build_html():
 
     # Build extra sections
     extra_html = ""
-    for section_name, subsections in full_extra_sections.items():
+    for section_name, subsections in EXTRA_SECTIONS.items():
         extra_html += build_extra_section(section_name, subsections)
 
     # Stats
     total_acolyer = sum(len(v) for v in categories.values())
     unique_acolyer = len(set(p["url"] for v in categories.values() for p in v))
-    total_brooker = sum(len(v) for v in full_extra_sections.get("📚 Marc Brooker's Essential Reading", {}).values())
-    total_pwl = sum(len(v) for v in full_extra_sections.get("🎥 Papers We Love Videos", {}).values())
-    total_arpit = sum(len(v) for v in full_extra_sections.get("📝 Arpit Bhayani's Papershelf", {}).values())
-    total_kafka = sum(len(v) for v in full_extra_sections.get("📚 Kafka & Stream Processing", {}).values())
-    total_adds = sum(
-        sum(len(subs.get("Papers", [])) for subs in v.values() if "Papers" in v)
-        if any("Papers" in sv for sv in v.values()) else sum(len(sv) for sv in v.values())
-        for k, v in full_extra_sections.items()
-        if k.startswith("📖 ")
-    )
+    total_brooker = sum(len(v) for v in EXTRA_SECTIONS["📚 Marc Brooker's Essential Reading"].values())
+    total_pwl = sum(len(v) for v in EXTRA_SECTIONS["🎥 Papers We Love Videos"].values())
+    total_arpit = sum(len(v) for v in EXTRA_SECTIONS["📝 Arpit Bhayani's Papershelf"].values())
+    total_kafka = sum(len(v) for v in EXTRA_SECTIONS["📚 Kafka & Stream Processing"].values())
+    total_adds = sum(len(v) for v in add_tags.values())
 
-    all_section_keys = list(SECTIONS.keys()) + list(full_extra_sections.keys())
+    all_section_keys = list(SECTIONS.keys()) + list(EXTRA_SECTIONS.keys())
 
     html = f"""<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -723,7 +835,7 @@ def build_html():
             </div>
             <!-- Quick nav -->
             <nav class="mt-4 flex flex-wrap gap-2" aria-label="Jump to section" id="header-nav">
-                {''.join(f'<a href="#{s.lower().replace(" ", "-").replace(",", "").replace("&", "and").replace("📚", "").replace("🎥", "").replace("📝", "").replace(":", "").strip()}" class="text-xs px-2 py-1 bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-sm hover:border-[#C8102E]/40 hover:text-[#C8102E] transition-colors motion-safe:transition-colors focus-visible:ring-2 focus-visible:ring-[#C8102E] focus-visible:outline-none min-h-[44px] min-w-[44px] inline-flex items-center">{s}</a>' for s in all_section_keys)}
+                {''.join(f'<a href="#{section_id(s)}" class="text-xs px-2 py-1 bg-stone-100 dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-sm hover:border-[#C8102E]/40 hover:text-[#C8102E] transition-colors motion-safe:transition-colors focus-visible:ring-2 focus-visible:ring-[#C8102E] focus-visible:outline-none min-h-[44px] min-w-[44px] inline-flex items-center">{s}</a>' for s in all_section_keys)}
             </nav>
             <!-- Sources -->
             <div class="mt-3 flex flex-wrap gap-3 text-xs text-stone-900/40 dark:text-stone-50/40" id="header-sources">
