@@ -678,7 +678,8 @@ def load_index_additions():
                 if len(parts) >= 3:
                     title = parts[1]  # Always index 1 for title
                     url = parts[-1]    # Always last for url
-                    add_tags[current_add_section].append({"title": title, "url": url})
+                    year = parts[0]     # Year is first
+                    add_tags[current_add_section].append({"title": title, "url": url, "date": year})
     
     # Parse facundoolano README
     facundo_file = "/tmp/software-papers.md"
@@ -705,19 +706,21 @@ def load_index_additions():
                 title = m.group(1).strip()
                 author = m.group(2).strip()
                 url = m.group(4)
+                year = m.group(3)
                 tag = FACUNDO_MAP.get(current_topic_raw, "") if current_topic_raw else ""
                 if tag:
-                    facundo_tags[tag].append({"title": title, "url": url})
+                    facundo_tags[tag].append({"title": title, "url": url, "date": year})
                 i += 3
                 continue
             m = re.match(r'\s+\*\s+(.+?)\.\s*\[(.+?)\s+\((\d{4})\)\]\((.+?)\)\.?$', line)
             if m and current_topic_raw:
                 title = m.group(1).strip()
                 url = m.group(4)
+                year = m.group(3)
                 tag = FACUNDO_MAP.get(current_topic_raw, "")
                 if tag:
                     facundo_tags.setdefault(tag, [])
-                    facundo_tags[tag].append({"title": title, "url": url})
+                    facundo_tags[tag].append({"title": title, "url": url, "date": year})
             i += 1
         # Merge facundo tags into add_tags
         for tag, papers in facundo_tags.items():
@@ -751,6 +754,18 @@ def build_html():
     for sub_name, papers in ds_subs.items():
         categories[f"DS::{sub_name}"] = papers
     
+    # Sort all papers within each category by date (newest first)
+    import re as _re
+    def sort_date(p):
+        d = p.get("date", "")
+        # Try 'Month DD, YYYY'
+        m = _re.search(r'(\d{4})', d)
+        if m:
+            return -int(m.group(1))  # negative for descending
+        return 0
+    for tag in categories:
+        categories[tag].sort(key=sort_date)
+    
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
     # Build Acolyer sections
@@ -759,6 +774,14 @@ def build_html():
         acolyer_html += build_acolyer_section(section_name, tag_names, categories)
 
     # Build extra sections
+    # Sort extra section papers by year (field 2 for Brooker/PWL, no year for Arpit)
+    for section_name, subsections in EXTRA_SECTIONS.items():
+        for sub_name, papers in subsections.items():
+            if papers and len(papers[0]) >= 3:
+                try:
+                    papers.sort(key=lambda p: -int(p[2]) if str(p[2])[:4].isdigit() else -int(p[3][:4]) if isinstance(p, tuple) and len(p) >= 4 else 0)
+                except:
+                    pass
     extra_html = ""
     for section_name, subsections in EXTRA_SECTIONS.items():
         extra_html += build_extra_section(section_name, subsections)
